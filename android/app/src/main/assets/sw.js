@@ -1,5 +1,5 @@
-const CACHE_NAME = 'physics-ege-2027-v17';
-const APP_FILES = ['./', './index.html', './styles.css?v=13', './mathml.js?v=4', './app.js?v=16', './manifest.webmanifest', './icon.svg'];
+const CACHE_NAME = 'physics-ege-2027-v28';
+const APP_FILES = ['./', './index.html', './styles.css?v=20', './mathml.js?v=4', './app.js?v=26', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES)));
   self.skipWaiting();

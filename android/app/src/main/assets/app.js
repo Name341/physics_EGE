@@ -29,22 +29,22 @@
       note:'Силы взаимодействия разных тел приложены к разным телам: их нельзя сокращать в уравнении для одного тела.'
     },
     statics: {
-      group:'mechanics',name:'Статика и жидкости',level:'Равновесие, давление, плавание',experiment:'Давление жидкости',lab:'mechanics',key:'statics',
+      group:'mechanics',name:'Статика и жидкости',level:'Равновесие, давление, плавание',experiment:'Плавание тела и сила Архимеда',lab:'mechanics',key:'statics',
       intro:'Статика изучает условия равновесия. Для поступательного равновесия векторная сумма сил равна нулю. Для вращательного равновесия суммарный момент сил относительно оси равен нулю.',
-      details:'Момент силы относительно оси равен $M=Fl$, где $l$ — плечо силы. Давление определяется как $p=F_\\perp/S$. Для покоящейся жидкости на глубине $h$ полное давление $p=p_0+\\rho gh$, а архимедова сила $F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}$.',
-      formulas:['\\sum\\vec{F}=0,\\quad\\sum M=0','p=\\frac{F_\\perp}{S}','F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}'],
-      derive:[['Столб жидкости', 'Рассмотрим над точкой площадь $S$ и высоту столба $h$. Его объём $V=Sh$, масса $m=\\rho Sh$.'], ['Вес столба', 'Сила тяжести жидкости равна $F=mg=\\rho Shg$. Разделим её на площадь основания.'], ['Избыточное давление', 'Получаем $p_{\\text{изб}}=F/S=\\rho gh$. Оно растёт линейно с глубиной и плотностью.'], ['Полное давление', 'К избыточному добавляется давление на свободной поверхности: $p=p_0+\\rho gh$. Это объясняет, почему стенки плотины делают толще у дна.']],
-      params:[{id:'depth',label:'Глубина',min:.2,max:15,value:4,step:.1,unit:'м'},{id:'rho',label:'Плотность жидкости',min:600,max:1400,value:1000,step:10,unit:'кг/м³'}],
-      note:'Закон Архимеда применим к телам в жидкости или газе. Давление на глубине — избыточное к атмосферному: ρgh.'
+      details:'Момент силы относительно оси равен $M=Fl$, где $l$ — плечо силы. Давление определяется как $p=F_\\perp/S$, а на глубине $h$ полное давление жидкости $p=p_0+\\rho gh$. На погружённую часть тела действует сила Архимеда $F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}$. Вес тела $F_{\\text{тяж}}=mg=\\rho_{\\text{т}}Vg$: поэтому изменение плотности тела или его объёма меняет и силу тяжести. Плавающее тело покоится, когда вытесненная жидкость уравновешивает вес; при движении добавляется сопротивление среды.',
+      formulas:['\\sum\\vec{F}=0,\\quad\\sum M=0','F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}','F_{\\text{тяж}}=mg=\\rho_{\\text{т}}Vg','V_{\\text{погр}}=\\pi h^2(R-\\frac{h}{3})'],
+      derive:[['Объём погружённой части', 'Для сферического тела радиуса $R$ жидкость срезает сферический сегмент высотой $h$. Его объём равен $V_{\\text{погр}}=\\pi h^2(R-h/3)$; при полном погружении $h=2R$ и получается объём сферы $4\\pi R^3/3$.'], ['Выталкивающая сила', 'Давление на нижнюю часть тела больше, чем на верхнюю. Разность сил давления равна весу вытесненной жидкости: $F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}$.'], ['Вес и равновесие', 'Масса тела $m=\\rho_{\\text{т}}V$, поэтому $F_{\\text{тяж}}=\\rho_{\\text{т}}Vg$. Если $\\rho_{\\text{т}}<\\rho_{\\text{ж}}$, тело может плавать частично погружённым; при большей плотности оно тонет до дна.'], ['Движение в жидкости', 'Выберем направление вниз положительным. Тогда $ma=F_{\\text{тяж}}-F_A-F_{\\text{сопр}}$. Сопротивление направлено против скорости; при достижении дна реакция опоры уравновешивает оставшуюся силу.'] ],
+      params:[{id:'rho',label:'Плотность жидкости',min:300,max:1600,value:1000,step:10,unit:'кг/м³'},{id:'bodyDensity',label:'Плотность тела',min:100,max:2500,value:700,step:10,unit:'кг/м³'},{id:'volume',label:'Объём тела',min:.001,max:.08,value:.01,step:.001,unit:'м³'}],
+      note:'Модель показывает сферу в жидкости с динамической вязкостью воды 0,001 Па·с. Сопротивление использует закон Стокса при малом числе Рейнольдса и стандартную корреляцию обтекания сферы при больших скоростях; так возникают реалистичное торможение и предельная скорость.'
     },
     conservation: {
-      group:'mechanics',name:'Законы сохранения',level:'Импульс, работа, энергия',experiment:'Упругое столкновение',lab:'mechanics',key:'conservation',
+      group:'mechanics',name:'Законы сохранения',level:'Импульс, работа, энергия',experiment:'Скольжение по параболической дорожке',lab:'mechanics',key:'conservation',
       intro:'Законы сохранения помогают связать состояние системы до и после взаимодействия. Импульс сохраняется, если равнодействующая внешних сил равна нулю. Механическая энергия сохраняется при действии только консервативных сил.',
       details:'Импульс тела — $\\vec p=m\\vec v$. Работа постоянной силы $A=Fs\\cos\\alpha$ изменяет кинетическую энергию: $A_\\Sigma=\\Delta E_k$. Механическая энергия включает $E_k=mv^2/2$, $E_p=mgh$ и энергию пружины $E_{\\text{упр}}=kx^2/2$. При неупругих взаимодействиях часть энергии переходит во внутреннюю.',
-      formulas:['\\vec{p}_{\\text{до}}=\\vec{p}_{\\text{после}}','E_k=\\frac{mv^2}{2}','A_\\Sigma=\\Delta E_k'],
+      formulas:['\\vec{p}_{\\text{до}}=\\vec{p}_{\\text{после}}','E_0=\\frac{mV_{\\text{нач}}^2}{2}','E_k=\\frac{mv^2}{2}','E_p=mgh','v(x)=\\sqrt{V_{\\text{нач}}^2-2gh(x)}','h(x)=H_{\\max}\\left(\\frac{x}{L}\\right)^2'],
       derive:[['Импульс силы', 'Для тела $\\vec F_{\\text{рез}}=m\\Delta\\vec v/\\Delta t$. Умножение на время даёт импульс силы $\\vec F\\Delta t=\\Delta\\vec p$.'], ['Система тел', 'При сложении уравнений для всех тел внутренние силы попарно компенсируются по третьему закону Ньютона. Изменение полного импульса задаёт внешний импульс.'], ['Условие сохранения', 'Если $\\sum\\vec F_{\\text{внеш}}\\Delta t=0$ или им можно пренебречь, то $\\vec p_{\\text{до}}=\\vec p_{\\text{после}}$.'], ['Энергетический баланс', 'Работа равнодействующей равна $\\Delta E_k$. Только при отсутствии потерь механическая энергия сохраняется; при неупругом ударе часть $E_k$ становится внутренней энергией.']],
-      params:[{id:'mass',label:'Масса',min:.5,max:10,value:2,step:.5,unit:'кг'},{id:'speed',label:'Скорость',min:0,max:16,value:5,step:.5,unit:'м/с'},{id:'height',label:'Высота',min:0,max:14,value:3,step:.5,unit:'м'}],
-      note:'Импульс сохраняется для замкнутой системы. Кинетическая энергия сохраняется только при абсолютно упругом столкновении.'
+      params:[{id:'mass',label:'Масса',min:.5,max:10,value:2,step:.5,unit:'кг'},{id:'speed',label:'Начальная скорость',min:0,max:16,value:5,step:.5,unit:'м/с'},{id:'height',label:'Макс. высота Hмакс',min:0,max:14,value:3,step:.5,unit:'м'}],
+      note:'Тело стартует из нижней точки со скоростью Vнач. Высота края Hмакс задаёт форму дорожки: $h(x)=ax^2$, где $a=H_{\\max}/L^2$. На гладком участке кинетическая и потенциальная энергии переходят друг в друга. На концах стоят идеальные упругие ограничители. Масса масштабирует энергию и импульс, но не меняет траекторию без трения.'
     },
     waves: {
       group:'mechanics',name:'Колебания и механические волны',level:'Период, энергия, резонанс, звук',experiment:'Волна на струне',lab:'waves',key:'waves',
@@ -62,7 +62,7 @@
       formulas:['pV=\\nu RT','\\langle E_k\\rangle=\\frac{3}{2}kT','p=nkT'],
       derive:[['Удары о стенку', 'При упругом столкновении молекула меняет импульс. По третьему закону стенка получает противоположный импульс.'], ['Давление и концентрация', 'Частые удары большого числа молекул дают среднее давление. Кинетическая модель приводит к $pV=2N\\langle E_k\\rangle/3$.'], ['Связь с температурой', 'Для поступательного движения $\\langle E_k\\rangle=3kT/2$. Подстановка даёт $pV=NkT$.'], ['Уравнение состояния', 'Для $N$ частиц $N=\\nu N_A$ и $R=N_Ak$, поэтому $pV=\\nu RT$. Так выводится уравнение Менделеева—Клапейрона.']],
       params:[{id:'temperature',label:'Температура',min:120,max:900,value:300,step:5,unit:'К'},{id:'volume',label:'Объём',min:4,max:20,value:12,step:.5,unit:'л'},{id:'amount',label:'Количество вещества',min:.1,max:3,value:1,step:.1,unit:'моль'}],
-      note:'В уравнение состояния подставляют абсолютную температуру T в кельвинах. В модели газа важна средняя кинетическая энергия.'
+      note:'В уравнение состояния подставляют абсолютную температуру $T$ в кельвинах. В модели газа важна средняя кинетическая энергия.'
     },
     thermodynamics: {
       group:'thermal',name:'Термодинамика',level:'Теплота, работа, необратимость',experiment:'Первый закон термодинамики',lab:'molecules',key:'thermodynamics',
@@ -71,7 +71,7 @@
       formulas:['\\Delta U=Q+A_{\\text{над}}','Q=cm\\Delta T','\\eta=\\frac{A_{\\text{пол}}}{Q_{\\text{нагр}}}'],
       derive:[['Энергия системы', 'Внутренняя энергия меняется при теплопередаче и совершении работы. Выберем положительными тепло, полученное системой, и работу, совершённую над ней.'], ['Первый закон', 'Закон сохранения энергии для системы даёт $\\Delta U=Q+A_{\\text{над}}$. Полученное тепло и работа над газом увеличивают его внутреннюю энергию.'], ['Связь с работой газа', 'Если обозначить положительную при расширении работу газа через $A_{\\text{газ}}=-A_{\\text{над}}$, получим $\\Delta U=Q-A_{\\text{газ}}$.'], ['Проверка знака', 'При изотермическом расширении идеального газа $\\Delta U=0$, поэтому $Q=A_{\\text{газ}}$: всё полученное тепло уходит на работу.']],
       params:[{id:'heat',label:'Количество теплоты',min:-800,max:1200,value:400,step:10,unit:'Дж'},{id:'work',label:'Работа над газом',min:-800,max:1200,value:150,step:10,unit:'Дж'},{id:'mass',label:'Масса тела',min:.2,max:5,value:1,step:.1,unit:'кг'}],
-      note:'Для цикла ΔU = 0: вся подведённая теплота превращается в работу с учётом потерь. КПД идеальной машины не достигает 100%.'
+      note:'Для цикла $\\Delta U=0$: вся подведённая теплота превращается в работу с учётом потерь. КПД идеальной машины не достигает 100%.'
     },
     electric: {
       group:'electrodynamics',name:'Электрическое поле',level:'Заряды, напряжённость, потенциал',experiment:'Взаимодействие зарядов',lab:'electromagnetism',key:'electric',
@@ -95,7 +95,7 @@
       group:'electrodynamics',name:'Магнитное поле и индукция',level:'Магнитные силы, потоки, ЭДС',experiment:'Электромагнитная индукция',lab:'electromagnetism',key:'magnetism',
       intro:'Магнитное поле создают движущиеся заряды и токи. Оно действует на движущиеся заряженные частицы и проводники с током. Меняющееся магнитное поле индуцирует ЭДС — это явление электромагнитной индукции.',
       details:'Магнитная сила на заряд имеет модуль $F_L=|q|vB\\sin\\alpha$, а сила Ампера на проводник — $F_A=BIl\\sin\\alpha$. Поток через плоский контур $\\Phi=BS\\cos\\alpha$. ЭДС индукции задаётся законом Фарадея—Ленца $\\mathcal E=-N\\,d\\Phi/dt$.',
-      formulas:['F_L=|q|vB\\sin\\alpha','\\Phi=BS\\cos\\alpha','|\\mathrm{E}|=\\frac{|\\Delta\\Phi|}{\\Delta t}'],
+      formulas:['F_L=|q|vB\\sin\\alpha','\\Phi=BS\\cos\\alpha','|\\mathcal{E}|=\\frac{|\\Delta\\Phi|}{\\Delta t}'],
       derive:[['Магнитный поток', 'Поток характеризует поле через площадь контура: $\\Phi=BS\\cos\\alpha$, где $\\alpha$ — угол между $\\vec B$ и нормалью.'], ['Изменение потока', 'Поток меняется при изменении поля, площади контура или его ориентации. Быстрее изменение — больше индуцированная ЭДС.'], ['Закон Фарадея', 'Для катушки из $N$ витков $\\mathcal E=-N\\,d\\Phi/dt$. Модуль равен скорости изменения потокосцепления.'], ['Правило Ленца', 'Знак минус задаёт направление: индуцированный ток создаёт поле, препятствующее изменению потока. Энергия тока поступает от работы по перемещению магнита или контура.']],
       params:[{id:'turns',label:'Число витков',min:1,max:500,value:100,step:5,unit:''},{id:'flux',label:'Изменение потока',min:.01,max:1,value:.18,step:.01,unit:'Вб'},{id:'time',label:'Время изменения',min:.05,max:2,value:.3,step:.05,unit:'с'}],
       note:'Направление индукционного тока находят правилом Ленца; модуль ЭДС равен скорости изменения полного магнитного потока.'
@@ -116,7 +116,7 @@
       formulas:['\\frac{1}{F}=\\frac{1}{d}+\\frac{1}{f}','D=\\frac{1}{F}','\\Gamma=-\\frac{f}{d}'],
       derive:[['Ход лучей', 'Луч, параллельный главной оси собирающей линзы, после неё проходит через фокус. Луч через оптический центр в тонкой линзе почти не меняет направления.'], ['Изображение', 'Точка пересечения действительных лучей задаёт действительное изображение. Если пересекаются только продолжения лучей, изображение мнимое.'], ['Подобие треугольников', 'Из геометрии лучей следует связь высот и расстояний: $\\Gamma=h_1/h=-f/d$.'], ['Формула линзы', 'Совместив подобие треугольников с фокусным лучом, получаем $1/F=1/d+1/f$. Знаки расстояний определяют тип и положение изображения.']],
       params:[{id:'focal',label:'Фокусное расстояние',min:.5,max:9,value:3,step:.1,unit:'см'},{id:'object',label:'Расстояние до предмета',min:1,max:18,value:8,step:.1,unit:'см'}],
-      note:'В данной визуализации F и расстояния заданы в сантиметрах. Оптическую силу рассчитывают в диоптриях через метры.'
+      note:'В данной визуализации $F$ и расстояния заданы в сантиметрах. Оптическую силу рассчитывают в диоптриях через метры.'
     },
     photons: {
       group:'quantum',name:'Корпускулярно-волновой дуализм',level:'Фотон и фотоэффект',experiment:'Квант энергии света',lab:'quantum',key:'photons',
@@ -125,7 +125,7 @@
       formulas:['E_\\gamma=h\\nu=\\frac{hc}{\\lambda}','E_{k,\\max}=h\\nu-A_{\\text{вых}}','eU_{\\text{з}}=E_{k,\\max}'],
       derive:[['Квант света', 'Свет передаёт энергию порциями — фотонами. Энергия фотона пропорциональна частоте: $E_\\gamma=h\\nu=hc/\\lambda$.'], ['Работа выхода', 'Электрону нужно получить минимальную энергию $A_{\\text{вых}}$, чтобы покинуть поверхность металла. Если $h\\nu<A_{\\text{вых}}$, фотоэффекта нет.'], ['Баланс энергии', 'Энергия фотона расходуется на выход электрона и его кинетическую энергию: $h\\nu=A_{\\text{вых}}+E_k$. Поэтому $E_{k,\\max}=h\\nu-A_{\\text{вых}}$.'], ['Остановка электронов', 'Задерживающее электрическое поле останавливает самые быстрые фотоэлектроны. Из работы поля следует $eU_{\\text{з}}=E_{k,\\max}$.']],
       params:[{id:'wavelength',label:'Длина волны',min:150,max:900,value:450,step:5,unit:'нм'},{id:'work',label:'Работа выхода',min:.5,max:5,value:2,step:.1,unit:'эВ'}],
-      note:'1 эВ = 1,602·10⁻¹⁹ Дж. Работа выхода — свойство материала; фотоэффект возможен только при Eфотона ≥ Aвых.'
+      note:'$1\\,\\text{эВ}=1{,}602\\cdot10^{-19}\\,\\text{Дж}$. Работа выхода — свойство материала; фотоэффект возможен только при $E_\\gamma\\ge A_{\\text{вых}}$.'
     },
     atom: {
       group:'quantum',name:'Физика атома',level:'Ядро, электронные уровни, спектр',experiment:'Атом водорода',lab:'quantum',key:'atom',
@@ -167,7 +167,7 @@
   const theoryExtensions = {
     kinematics:[['Средняя и мгновенная скорость','Средняя скорость по перемещению равна $\\vec v_{\\text{ср}}=\\Delta\\vec r/\\Delta t$, а путь за время даёт среднюю путевую скорость. Мгновенная скорость — предел при малом интервале времени; на графике координаты это касательная.'],['Свободное падение','Без сопротивления воздуха все тела получают одно и то же ускорение $g$ независимо от массы. При выборе оси вверх проекция ускорения равна $-g$, поэтому знаки в уравнениях движения важны.'],['Как читать график','На графике $v(t)$ наклон задаёт ускорение, а площадь с учётом знака — проекцию перемещения. Если скорость меняет знак, путь складывают по модулям площадей на отдельных участках.']],
     dynamics:[['Сила реакции и вес','Реакция опоры $N$ — сила опоры на тело; вес — сила, с которой тело действует на опору. На ускоряющейся опоре эти величины могут отличаться. Силы действия и противодействия всегда приложены к разным телам.'],['Трение покоя и скольжения','Трение покоя подстраивается до предела $F_{\\text{тр.пок}}\\leq\\mu_0N$. При скольжении в школьной модели $F_{\\text{тр}}=\\mu N$ и сила направлена против относительного движения поверхностей.'],['Движение по окружности','Даже при постоянном модуле скорости направление меняется, значит есть центростремительное ускорение $a_n=v^2/R$. Его создаёт радиальная составляющая равнодействующей, а не отдельная новая сила.']],
-    statics:[['Рычаг и равновесие','Для рычага условие равновесия записывают через моменты $F_1l_1=F_2l_2$. Увеличение плеча позволяет уравновесить большую силу меньшей, но не уменьшает работу при идеальном перемещении.'],['Капиллярность и сообщающиеся сосуды','На одинаковой глубине покоящейся однородной жидкости давление одинаково. Поэтому в сообщающихся сосудах свободные поверхности одной жидкости на одной высоте, если давление над ними одинаково.'],['Условие плавания','Тело тонет, если его средняя плотность больше плотности жидкости; всплывает при меньшей. Для плавающего тела равновесие задаёт $mg=\\rho_{\\text{ж}}gV_{\\text{погр}}$, а доля погружённого объёма равна отношению плотностей.']],
+    statics:[['Рычаг и равновесие','Для рычага условие равновесия записывают через моменты $F_1l_1=F_2l_2$. Увеличение плеча позволяет уравновесить большую силу меньшей, но не уменьшает работу при идеальном перемещении.'],['Капиллярность и сообщающиеся сосуды','На одинаковой глубине покоящейся однородной жидкости давление одинаково. Поэтому в сообщающихся сосудах свободные поверхности одной жидкости на одной высоте, если давление над ними одинаково.'],['Сила Архимеда и геометрия','Выталкивающая сила зависит от объёма именно погружённой части, а не всего тела: $F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}$. Для плавающей сферы погружённый сегмент растёт вместе с глубиной её центра.'],['Условие плавания','Тело тонет, если его средняя плотность больше плотности жидкости; всплывает при меньшей. В равновесии $mg=\\rho_{\\text{ж}}gV_{\\text{погр}}$, поэтому для плавающего тела $V_{\\text{погр}}/V=\\rho_{\\text{т}}/\\rho_{\\text{ж}}$. При полном погружении более плотное тело опирается на дно.']],
     conservation:[['Работа переменной силы','Для постоянной силы $A=Fs\\cos\\alpha$. На графике проекции силы от координаты работа равна подписанной площади; отрицательная работа уменьшает кинетическую энергию.'],['Потенциальная энергия','Нуль потенциальной энергии выбирают условно. Для тяжести около Земли $E_p=mgh$, для пружины $E_{\\text{упр}}=kx^2/2$; физический смысл имеет изменение энергии между состояниями.'],['Неупругий удар','При абсолютно неупругом ударе тела после столкновения движутся вместе. Импульс замкнутой системы сохраняется, но часть кинетической энергии превращается во внутреннюю: её нельзя включать в закон сохранения механической энергии.']],
     waves:[['Обмен энергией','У пружинного маятника полная энергия в идеальном случае постоянна: $E=kA^2/2$. В крайних точках скорость равна нулю, а в положении равновесия кинетическая энергия максимальна.'],['Затухание и вынужденные колебания','Сопротивление среды уносит энергию, поэтому амплитуда свободных колебаний уменьшается. Вынуждающая периодическая сила поддерживает движение; около собственной частоты возникает резонансный максимум.'],['Звук и эхо','Звук — продольная механическая волна. Его скорость зависит от среды и температуры; высота тона связана с частотой, громкость — с интенсивностью. Эхо позволяет оценить расстояние по времени возврата отражённого сигнала.']],
     molecular:[['Распределение скоростей','Молекулы имеют разные скорости; при нагревании распределение Максвелла смещается к большим значениям. Характерная среднеквадратичная скорость идеального газа $v_{\\text{кв}}=\\sqrt{3RT/M}$ зависит от температуры и молярной массы.'],['Почему газ давит','При ударе о стенку молекула меняет импульс. Сумма импульсов множества ударов за время определяет силу давления; в модели идеального газа $p=nkT$, где $n=N/V$ — концентрация.'],['Границы модели','Идеальный газ хорошо описывает разреженный газ вдали от конденсации. При высоком давлении и низкой температуре собственный объём молекул и их притяжение становятся существенными.']],
@@ -182,7 +182,7 @@
     nucleus:[['Виды радиоактивных превращений','При альфа-распаде массовое число уменьшается на 4, зарядовое — на 2. При бета-минус-распаде нейтрон превращается в протон, поэтому зарядовое число увеличивается на 1, а массовое не меняется.'],['Статистика полураспада','Среднее число ядер убывает как $N=N_0e^{-\\lambda t}=N_0 2^{-t/T_{1/2}}$. Для малого образца фактическое число распадов случайно и может заметно отклоняться от средней кривой.'],['Энергия связи','Удельная энергия связи $E_{\\text{св}}/A$ показывает устойчивость ядра. При делении тяжёлых и слиянии лёгких ядер энергия может выделяться, если продукты оказываются более связанными.']]
   };
   function renderTheoryText(text){
-    return String(text??'').split(/(\$[^$]+\$)/g).map(part=>part.startsWith('$')&&part.endsWith('$')?PhysicsMath.render(part.slice(1,-1)):safe(part)).join('');
+    return String(text??'').split(/(\$[^$]+\$)/g).map(part=>part.startsWith('$')&&part.endsWith('$')?`<span class="math-inline">${PhysicsMath.render(part.slice(1,-1))}</span>`:safe(part)).join('');
   }
   const questionBank = [
     {topic:'Кинематика',level:'Базовый',title:'Площадь под графиком скорости',prompt:'Скорость тела равномерно возрастает от 2 до 10 м/с за 4 с. Какое перемещение совершило тело?',answers:['12 м','24 м','40 м','48 м'],correct:1,explain:'Площадь под графиком v(t) — перемещение. График образует трапецию: s = (2 + 10)·4/2 = 24 м.'},
@@ -213,7 +213,7 @@
     completed: Number(saved.completed || 0), completedTopics: new Set(saved.completedTopics || []), answered: Number(saved.answered || 0), correct: Number(saved.correct || 0),
     qIndex: Number(saved.qIndex || 0) % questionBank.length, answerState: null,
     filters: 'Все', examMarks: saved.examMarks || Array(26).fill(false), examSeconds: Number(saved.examSeconds ?? 235 * 60), examActive: false,
-    settings: {theme:saved.settings?.theme==='light'?'light':'dark',fontSize:['small','medium','large'].includes(saved.settings?.fontSize)?saved.settings.fontSize:'medium'},
+    settings: {theme:saved.settings?.theme==='light'?'light':'dark',fontSize:['smallest','small','medium','large','largest'].includes(saved.settings?.fontSize)?saved.settings.fontSize:'medium'},
     savedExperiments: Array.isArray(saved.savedExperiments)?saved.savedExperiments.filter(x=>x&&typeof x==='object'&&x.id):[],
     params: {}, lastHudUpdate:0,
     bodyId: Number(saved.bodyId || 2), selectedBody: Number(saved.selectedBody || 1), forcesOn: true,
@@ -240,6 +240,9 @@
   state.lab.circuit.nextId=Math.max(Number(state.lab.circuit.nextId)||1,...state.lab.circuit.elements.map(p=>(Number(p.id)||0)+1));
   state.lab.circuit.elements.forEach((p,i)=>{p.x=Number.isFinite(p.x)?p.x:.28+(i%3)*.2;p.y=Number.isFinite(p.y)?p.y:.3+Math.floor(i/3)*.17;p.closed=p.closed!==false;p.reversed=Boolean(p.reversed);});
   let lastFrame = performance.now();
+  const staticsMotion={depth:.02,x:.5,vy:0,lastTime:0,initialized:false,readoutAt:0,dragging:false};
+  const conservationMotion={x:0,vx:0,lastTime:0,signature:'',initialized:false,readoutAt:0};
+  let circuitFullscreen=false;
 
   function persist() {
     try { localStorage.setItem(storeKey, JSON.stringify({ topic:state.topic,completed:state.completed,completedTopics:[...state.completedTopics],answered:state.answered,correct:state.correct,qIndex:state.qIndex,examMarks:state.examMarks,examSeconds:state.examSeconds,lab:state.lab,bodies:state.bodies,bodyId:state.bodyId,selectedBody:state.selectedBody,sim:state.sim,settings:state.settings,savedExperiments:state.savedExperiments })); } catch { /* storage may be disabled */ }
@@ -250,12 +253,13 @@
   const groupOf = (id) => groups.find(g => g.id === id) || groups[0];
   function setScreen(screen) {
     state.screen = screen;
+    if(screen!=='lab')circuitFullscreen=false;
     if(screen === 'theory' && !topics[state.topic]) state.topic = groups.find(g=>g.id===state.group)?.topics[0] || 'kinematics';
     if(screen === 'lab') { state.running = true; }
     render();
   }
-  function showToast(message) {
-    const toast = $('#toast'); toast.textContent = message; toast.classList.add('show');
+  function showToast(message,variant='') {
+    const toast = $('#toast'); toast.classList.remove('show','circuit-added'); toast.textContent = message; if(variant)toast.classList.add(variant); void toast.offsetWidth; toast.classList.add('show');
     clearTimeout(state.toastTimer); state.toastTimer = setTimeout(()=>toast.classList.remove('show'),2300);
   }
   function applySettings(){
@@ -275,7 +279,7 @@
 
   function renderHome() {
     rootView.innerHTML = `
-      <section class="home-hero"><div class="hero-copy"><div class="eyebrow">ПОДГОТОВКА К ЕГЭ · 2027</div><h1>Понимай физику.<br><span>Управляй экспериментом.</span></h1><p>Исследуй движение, электрические цепи и микромир. Потрогай законы физики руками — прямо в браузере, без лабораторного оборудования.</p><div class="hero-actions"><button class="primary-button" data-nav="lab">◉ &nbsp; Открыть песочницу <span>↗</span></button><button class="secondary-button" data-nav="theory">Изучать теорию</button></div></div><div class="hero-visual"><canvas id="hero-canvas"></canvas><div class="hero-equation">F = ma <span style="color:var(--lime)">·</span> Σp = const</div></div></section>
+      <section class="home-hero"><div class="hero-copy"><div class="eyebrow">ПОДГОТОВКА К ЕГЭ · 2027</div><h1>Понимай физику.<br><span>Управляй экспериментом.</span></h1><p>Исследуй движение, электрические цепи и микромир. Потрогай законы физики руками — прямо в браузере, без лабораторного оборудования.</p><div class="hero-actions"><button class="primary-button" data-nav="lab">◉ &nbsp; Открыть песочницу <span>↗</span></button><button class="secondary-button" data-nav="theory">Изучать теорию</button></div></div><div class="hero-visual"><canvas id="hero-canvas"></canvas><div class="hero-equation">F = ma <span style="color:var(--lime)">|</span> Σp = const</div></div></section>
       <section class="stats-row"><div class="stat-card"><span class="stat-icon">▤</span><span class="stat-copy"><strong>${Object.keys(topics).length} тем</strong><span>в 4 разделах курса</span></span></div><div class="stat-card"><span class="stat-icon blue">◉</span><span class="stat-copy"><strong>7 лабораторий</strong><span>интерактивные модели</span></span></div><div class="stat-card"><span class="stat-icon orange">◌</span><span class="stat-copy"><strong>${state.correct} / ${state.answered}</strong><span>ответов в тренажёре</span></span></div></section>
       <section class="dashboard-grid"><div><div class="section-heading"><div><h2>Изучай по разделам</h2><p>Программа подготовки к экзамену</p></div><button class="text-button" data-nav="theory">Все темы&nbsp; ↗</button></div><div class="course-grid">${groups.map(g=>`<button class="course-card" data-group="${g.id}"><span class="course-head"><span class="course-icon ${g.color}">${g.icon}</span><span class="course-arrow">↗</span></span><h3>${g.name}</h3><p>${g.short}</p></button>`).join('')}</div><div class="resume-card"><span class="resume-cover">${groupOf(activeTopic().group).icon}</span><span class="resume-info"><small>ПРОДОЛЖИТЬ ИЗУЧЕНИЕ</small><strong>${activeTopic().name}</strong><span>${groupOf(activeTopic().group).name} · 6 мин</span></span><button class="play-button" data-action="continue" aria-label="Продолжить">▶</button></div></div><div><div class="section-heading"><div><h2>Быстрый старт</h2><p>Начни с самого интересного</p></div></div><div class="quick-card"><div class="quick-row" data-sim="mechanics"><span class="quick-icon">↗</span><span><strong>Запусти тележки</strong><small>Силы, масса, столкновения</small></span><span class="chevron">→</span></div><div class="quick-row" data-sim="circuits"><span class="quick-icon">ϟ</span><span><strong>Собери электрическую цепь</strong><small>Закон Ома прямо на экране</small></span><span class="chevron">→</span></div><div class="quick-row" data-sim="waves"><span class="quick-icon">∿</span><span><strong>Создай волну</strong><small>Частота и длина волны</small></span><span class="chevron">→</span></div></div></div></section>`;
     requestAnimationFrame(drawHero);
@@ -288,15 +292,15 @@
   function renderTheory() {
     const t=activeTopic(), g=groupOf(t.group);
     const params=state.params[t.key] || Object.fromEntries(t.params.map(p=>[p.id,p.value])); state.params[t.key]=params;
-    rootView.innerHTML=`<div class="eyebrow">ТЕОРИЯ · ${safe(g.name.toUpperCase())}</div><h1 class="page-title">Законы, которые объясняют мир</h1><p class="page-subtitle">Разбирайся в физических моделях, прослеживай каждый шаг вывода и проверяй формулы на интерактивном опыте.</p><div class="theory-layout">${renderTopicIndex()}<article class="lesson-area"><div class="lesson-top"><div><div class="eyebrow">${safe(t.level.toUpperCase())}</div><h2 class="lesson-title">${safe(t.name)}</h2><span class="lesson-meta">Раздел «${safe(g.name)}» · модель и вывод формул</span></div><div class="lesson-actions"><button class="outline-button" data-action="bookmark">♡ Сохранить</button><button class="chip-button" data-action="topic-lab">◉ Исследовать</button></div></div><p class="lesson-intro">${renderTheoryText(t.intro)}</p><p class="lesson-intro" style="margin-top:-6px">${renderTheoryText(t.details)}</p><div class="visual-card"><canvas id="theory-canvas"></canvas><span class="visual-output" id="theory-output"></span><span class="visual-caption">${safe(t.experiment)} · модель меняется вместе с параметрами</span></div><div class="formula-strip"><span class="formula-label">Основные соотношения</span>${t.formulas.map(x=>`<span class="formula">${PhysicsMath.render(x)}</span>`).join('')}</div><section class="detail-card"><h3>Разберём тему подробнее</h3><div id="theory-notes" class="detail-grid"></div></section><section class="derive-card"><h3><span>↳</span> Откуда берётся формула</h3><div class="derive-steps">${t.derive.map((d,i)=>`<div class="derive-step"><b>ШАГ 0${i+1} · ${safe(d[0])}</b><p>${renderTheoryText(d[1])}</p></div>`).join('')}</div></section><section class="topic-experiment"><div class="section-heading" style="margin-bottom:11px"><div><h2>Проверь зависимость</h2><p>Меняй параметры и наблюдай за результатом</p></div><span class="topic-tag">Интерактивная модель</span></div>${t.params.map(p=>`<div class="control-row"><label for="tp-${p.id}">${safe(p.label)}</label><input id="tp-${p.id}" type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${params[p.id]??p.value}" data-theory-param="${p.id}"><output id="out-${p.id}">${fmt(params[p.id]??p.value,2)} ${p.unit}</output></div>`).join('')}<div class="experiment-result" id="theory-result"></div></section><div class="info-note">◈ &nbsp;${safe(t.note)}</div></article></div>`;
+    rootView.innerHTML=`<div class="eyebrow">ТЕОРИЯ · ${safe(g.name.toUpperCase())}</div><h1 class="page-title">Законы, которые объясняют мир</h1><p class="page-subtitle">Разбирайся в физических моделях, прослеживай каждый шаг вывода и проверяй формулы на интерактивном опыте.</p><div class="theory-layout">${renderTopicIndex()}<article class="lesson-area"><div class="lesson-top"><div><div class="eyebrow">${safe(t.level.toUpperCase())}</div><h2 class="lesson-title">${safe(t.name)}</h2><span class="lesson-meta">Раздел «${safe(g.name)}» · модель и вывод формул</span></div><div class="lesson-actions"><button class="outline-button" data-action="bookmark">♡ Сохранить</button><button class="chip-button" data-action="topic-lab">◉ Исследовать</button></div></div><p class="lesson-intro">${renderTheoryText(t.intro)}</p><p class="lesson-intro" style="margin-top:-6px">${renderTheoryText(t.details)}</p><div class="visual-experiment-layout"><div class="visual-card ${t.key==='statics'?'statics-visual':''}"><canvas id="theory-canvas" aria-label="Интерактивная физическая модель"></canvas><div class="visual-output" id="theory-output"></div><span class="visual-caption">${t.key==='statics'?'Перетащите сферу; отпустите, чтобы наблюдать её движение под действием сил':safe(t.experiment)+' · модель меняется вместе с параметрами'}</span></div><section class="topic-experiment"><div class="section-heading" style="margin-bottom:11px"><div><h2>Проверь зависимость</h2><p>Меняй параметры и наблюдай за результатом</p></div><span class="topic-tag">Интерактивная модель</span></div>${t.params.map(p=>`<div class="control-row"><label for="tp-${p.id}">${safe(p.label)}</label><input id="tp-${p.id}" type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${params[p.id]??p.value}" data-theory-param="${p.id}"><output id="out-${p.id}">${fmt(params[p.id]??p.value,2)} ${p.unit}</output></div>`).join('')}<div class="experiment-result" id="theory-result"></div></section></div><div class="formula-strip"><span class="formula-label">Основные соотношения</span>${t.formulas.map(x=>`<span class="formula">${PhysicsMath.render(x)}</span>`).join('')}</div><section class="detail-card"><h3>Разберём тему подробнее</h3><div id="theory-notes" class="detail-grid"></div></section><section class="derive-card"><h3><span>↳</span> Откуда берётся формула</h3><div class="derive-steps">${t.derive.map((d,i)=>`<div class="derive-step"><b>ШАГ 0${i+1} · ${safe(d[0])}</b><p>${renderTheoryText(d[1])}</p></div>`).join('')}</div></section><div class="info-note">◈ &nbsp;${renderTheoryText(t.note)}</div></article></div>`;
     const notes=$('#theory-notes');if(notes)notes.innerHTML=[...(theorySections[state.topic]||[]),...(theoryExtensions[state.topic]||[])].map(x=>'<div class="detail-note"><b>'+safe(x[0])+'</b><p>'+renderTheoryText(x[1])+'</p></div>').join('');
-    updateTheory(); requestAnimationFrame(drawTheory);
+    updateTheory(); bindStaticsInteraction();
   }
 
   const simModes=[['mechanics','Механика'],['molecules','Газ'],['electromagnetism','Электромагнетизм'],['circuits','Конструктор цепей'],['waves','Волны'],['optics','Оптика'],['quantum','Квантовая лаборатория']];
   function bodySelected(){return state.bodies.find(b=>b.id===state.selectedBody)||state.bodies[0];}
   function renderLab() {
-    rootView.innerHTML=`<div class="lab-heading"><div><div class="eyebrow">ВИРТУАЛЬНЫЙ ФИЗИЧЕСКИЙ ПРАКТИКУМ</div><h1 class="page-title">Лаборатория-песочница</h1><p class="page-subtitle">Добавляй объекты, меняй параметры и проверяй законы физики на практике. Каждая модель реагирует в реальном времени.</p></div><div class="lab-toolbar"><button class="outline-button" data-action="reset-lab">↺ Сбросить опыт</button><button class="primary-button" data-action="save-experiment">▣ Сохранить опыт</button></div></div><div class="lab-grid ${state.sim==='circuits'?'circuit-layout':''}"><section class="lab-main"><div class="mode-tabs">${simModes.map(s=>`<button class="mode-tab ${state.sim===s[0]?'active':''}" data-sim="${s[0]}">${s[1]}</button>`).join('')}</div><div class="lab-canvas-wrap ${state.sim==='circuits'?'circuit-mode':''}"><canvas id="lab-canvas" aria-label="Интерактивная физическая симуляция"></canvas><div class="canvas-hud" id="canvas-hud"></div><span class="canvas-hint" id="canvas-hint"></span><div class="canvas-bottom"><span id="canvas-left">Исследуй модель</span><span id="canvas-right">Единицы СИ</span></div></div><div class="exp-stats" id="exp-stats"></div><p class="sim-caption" id="sim-caption"></p></section><aside class="lab-controls" id="lab-controls"></aside></div>`;
+    rootView.innerHTML=`<div class="lab-heading"><div><div class="eyebrow">ВИРТУАЛЬНЫЙ ФИЗИЧЕСКИЙ ПРАКТИКУМ</div><h1 class="page-title">Лаборатория-песочница</h1><p class="page-subtitle">Добавляй объекты, меняй параметры и проверяй законы физики на практике. Каждая модель реагирует в реальном времени.</p></div><div class="lab-toolbar"><button class="outline-button" data-action="reset-lab">↺ Сбросить опыт</button><button class="primary-button" data-action="save-experiment">▣ Сохранить опыт</button></div></div><div class="lab-grid ${state.sim==='circuits'?'circuit-layout'+(circuitFullscreen?' is-fullscreen':''):''}"><section class="lab-main"><div class="mode-tabs">${simModes.map(s=>`<button class="mode-tab ${state.sim===s[0]?'active':''}" data-sim="${s[0]}">${s[1]}</button>`).join('')}</div><div class="lab-canvas-wrap ${state.sim==='circuits'?'circuit-mode':''}">${state.sim==='circuits'?`<button class="circuit-fullscreen-toggle" data-action="circuit-fullscreen" aria-expanded="${circuitFullscreen}">${circuitFullscreen?'↙ Выйти из полного экрана':'⛶ На весь экран'}</button>`:''}<canvas id="lab-canvas" aria-label="Интерактивная физическая симуляция"></canvas><div class="canvas-hud" id="canvas-hud"></div><span class="canvas-hint" id="canvas-hint"></span><div class="canvas-bottom"><span id="canvas-left">Исследуй модель</span><span id="canvas-right">Единицы СИ</span></div></div><div class="exp-stats" id="exp-stats"></div><p class="sim-caption" id="sim-caption"></p></section><aside class="lab-controls" id="lab-controls"></aside></div>`;
     renderLabControls();bindCanvasInteraction();
   }
 
@@ -391,7 +395,7 @@
   function addCircuitElement(type,x,y){
     const c=state.lab.circuit;if(c.elements.length>=24){showToast('На поле можно разместить до 24 элементов.');return;}
     const i=c.elements.length,col=i%3,row=Math.floor(i/3),part=newCircuitPart(type,c.nextId++,x??(.27+col*.22+(row%2)*.04),y??(.28+row*.17));
-    part.x=Math.max(.08,Math.min(.92,part.x));part.y=Math.max(.12,Math.min(.88,part.y));c.elements.push(part);c.selectedId=part.id;c.pendingWire=null;renderLabControls();updateLabNumbers();persist();
+    part.x=Math.max(.08,Math.min(.92,part.x));part.y=Math.max(.12,Math.min(.88,part.y));c.elements.push(part);c.selectedId=part.id;c.pendingWire=null;renderLabControls();updateLabNumbers();persist();showToast('Элемент добавлен','circuit-added');
   }
   function renderCircuitControls(box){
     const c=state.lab.circuit,sol=circuitSolution(),groups=['Источник','Нагрузка','Измерители'];
@@ -412,7 +416,7 @@
       const reading=p.type==='ammeter'?'<div class="circuit-reading">Ток: <b>'+fmt(m.current,4)+' А</b></div>':p.type==='voltmeter'?'<div class="circuit-reading">Напряжение: <b>'+fmt(m.voltage,3)+' В</b></div>':p.type==='lamp'?'<div class="circuit-reading">Ток '+fmt(m.current,3)+' А · мощность '+fmt(m.power,2)+' Вт</div>':'';
       inspector='<section class="circuit-inspector"><div class="circuit-side-heading"><h4>Настройки</h4><button data-circuit-action="remove-part" title="Удалить элемент">Удалить</button></div><b class="circuit-selected-name">'+circuitName(p.type)+'</b>'+fields+reading+'</section>';
     }else inspector='<section class="circuit-inspector circuit-empty-inspector"><b>Элемент не выбран</b><span>Перетащите элемент из палитры на поле, затем выберите его для настройки.</span></section>';
-    box.innerHTML='<div class="circuit-sidebar-title"><div><span class="eyebrow">СОБЕРИ СХЕМУ</span><h3>Элементы</h3></div><button data-circuit-action="clear" title="Очистить поле">Очистить</button></div><p class="circuit-instructions">Нажмите на элемент на поле, чтобы выбрать его и настроить. Для провода: двойной щелчок по первому элементу на компьютере или удержание на телефоне, затем одинарное нажатие на второй. Нажмите у левого или правого вывода, чтобы выбрать сторону. На телефоне коснитесь элемента в списке, чтобы добавить его.</p><div class="circuit-summary"><span>Элементов <b>'+c.elements.length+'</b></span><span>Проводов <b>'+c.wires.length+'</b></span></div><div class="circuit-palette">'+palette+'</div>'+inspector+'<section class="circuit-connections"><div class="circuit-side-heading"><h4>Провода</h4><span>'+sol.wires+'</span></div>'+wires+'</section><p class="circuit-model-note">Постоянный ток: конденсатор разомкнут, катушка учитывает активное сопротивление. Приборы показывают рассчитанные значения.</p>';
+    box.innerHTML='<div class="circuit-sidebar-title"><div><span class="eyebrow">СОБЕРИ СХЕМУ</span><h3>Элементы</h3></div><button data-circuit-action="clear" title="Очистить поле">Очистить</button></div><p class="circuit-instructions">Нажмите на элемент на поле, чтобы выбрать его и настроить. Чтобы соединить: двойной щелчок по первому элементу на ПК или удержание на телефоне, затем нажмите на второй. Чтобы удалить провод: двойной щелчок по нему на ПК или удержание на телефоне. Нажмите у левого или правого вывода, чтобы выбрать сторону. На телефоне коснитесь элемента в списке, чтобы добавить его.</p><div class="circuit-summary"><span>Элементов <b>'+c.elements.length+'</b></span><span>Проводов <b>'+c.wires.length+'</b></span></div><div class="circuit-palette">'+palette+'</div>'+inspector+'<section class="circuit-connections"><div class="circuit-side-heading"><h4>Провода</h4><span>'+sol.wires+'</span></div>'+wires+'</section><p class="circuit-model-note">Постоянный ток: конденсатор разомкнут, катушка учитывает активное сопротивление. Приборы показывают рассчитанные значения.</p>';
     const canvas=$('#lab-canvas');if(canvas)canvas.closest('.lab-canvas-wrap')?.classList.add('circuit-mode');
     updateLabNumbers();
   }
@@ -524,7 +528,7 @@
 
   function renderSettings(){
     const themeChoices=[['dark','Тёмная','◐'],['light','Светлая','☼']];
-    const fontChoices=[['small','Маленький','А−'],['medium','Обычный','А'],['large','Крупный','А+']];
+    const fontChoices=[['smallest','Очень маленький','А−−'],['small','Маленький','А−'],['medium','Обычный','А'],['large','Крупный','А+'],['largest','Очень крупный','А++']];
     const experiments=state.savedExperiments;
     const experimentRows=experiments.length?experiments.map(experiment=>{
       const date=new Date(experiment.savedAt),dateLabel=Number.isNaN(date.valueOf())?'Дата неизвестна':date.toLocaleString('ru-RU',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
@@ -539,6 +543,93 @@
     document.body.insertAdjacentHTML('beforeend',`<div class="modal-backdrop" id="modal-backdrop"><section class="modal"><div class="modal-head"><h2>Основа курса</h2><button class="modal-close" data-action="close-modal" aria-label="Закрыть">×</button></div><p>Пользовательское задание определяет устройство приложения: подготовка к ЕГЭ по физике, интерактивные выводы формул, лаборатория-песочница и сайт с тем же функционалом.</p><p>Файлы ФИПИ <b>«ФИ-11 ЕГЭ 2027 КОДИФ»</b> и <b>«ФИ-11 ЕГЭ 2027 СПЕЦ»</b> использованы как источники содержания курса и формата экзамена, а не как технические инструкции для разработки.</p><div class="derive-card"><h3>По проекту документов ЕГЭ-2027</h3><div class="derive-steps"><div class="derive-step"><b>СТРУКТУРА</b><p>26 заданий: 20 с кратким ответом и 6 с развёрнутым. Максимум 45 первичных баллов.</p></div><div class="derive-step"><b>РАЗДЕЛЫ</b><p>Механика; молекулярная физика и термодинамика; электродинамика; квантовая физика.</p></div><div class="derive-step"><b>ЭКСПЕРИМЕНТ</b><p>Задание 20 проверяет планирование эксперимента и выбор лабораторного оборудования.</p></div></div></div><p>В спецификации указано 235 минут на работу. Интерактивные модели в приложении упрощены для обучения; расчёты не подменяют полный курс теории и методические критерии экспертов ЕГЭ.</p><button class="primary-button" data-action="close-modal">Понятно</button></section></div>`);
   }
 
+  const staticsClamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  function staticsPhysics(p,depth=staticsMotion.depth,vy=staticsMotion.vy){
+    const liquidDensity=Math.max(1,Number(p.rho??1000)),bodyDensity=Math.max(1,Number(p.bodyDensity??700)),volume=Math.max(1e-6,Number(p.volume??.01)),g=9.81;
+    const radius=Math.cbrt(3*volume/(4*Math.PI)),capHeight=staticsClamp(depth+radius,0,2*radius);
+    const displacedVolume=Math.PI*capHeight*capHeight*(radius-capHeight/3),mass=bodyDensity*volume,weight=mass*g,buoyancy=liquidDensity*g*displacedVolume;
+    const wettedFraction=capHeight/(2*radius),area=Math.PI*radius*radius,viscosity=.001,speed=Math.abs(vy),reynolds=liquidDensity*(2*radius)*speed/viscosity;
+    const dragCoefficient=reynolds<1e-8?0:reynolds<1000?24/reynolds*(1+.15*Math.pow(reynolds,.687)):.44;
+    const drag=reynolds<1e-8?0:-Math.sign(vy)*.5*liquidDensity*dragCoefficient*area*speed*speed*wettedFraction;
+    const freeResultant=weight-buoyancy+drag,atFloor=depth>=1-radius-1e-5,support=atFloor?Math.max(0,freeResultant):0,resultant=freeResultant-support;
+    return {liquidDensity,bodyDensity,volume,g,radius,capHeight,displacedVolume,mass,weight,buoyancy,wettedFraction,drag,freeResultant,support,resultant,acceleration:resultant/mass,atFloor};
+  }
+  function staticsGeometry(w,h,p){
+    const top=21,bottom=h-23,airGap=.55,fluidDepth=1,scale=(bottom-top)/(airGap+fluidDepth),surface=top+airGap*scale,left=w*.22,right=w*.78;
+    const physics=staticsPhysics(p),radiusPx=Math.max(5.5,physics.radius*scale);
+    return {top,bottom,airGap,fluidDepth,scale,surface,left,right,radiusPx,physics};
+  }
+  function initializeStatics(p,now){
+    if(staticsMotion.initialized)return;
+    const physics=staticsPhysics(p,0,0);
+    if(physics.bodyDensity<physics.liquidDensity){
+      let lo=0,hi=2*physics.radius,target=physics.bodyDensity/physics.liquidDensity;
+      for(let i=0;i<36;i++){const mid=(lo+hi)/2,fraction=Math.PI*mid*mid*(physics.radius-mid/3)/physics.volume;if(fraction<target)lo=mid;else hi=mid;}
+      staticsMotion.depth=(lo+hi)/2-physics.radius;
+    }else staticsMotion.depth=.3;
+    staticsMotion.x=.5;staticsMotion.vy=0;staticsMotion.lastTime=now;staticsMotion.initialized=true;
+  }
+  function advanceStatics(p,now){
+    initializeStatics(p,now);
+    const dt=staticsMotion.lastTime?staticsClamp((now-staticsMotion.lastTime)/1000,0,.05):0;staticsMotion.lastTime=now;
+    if(staticsMotion.dragging||dt===0)return;
+    const steps=Math.max(1,Math.ceil(dt/.008)),step=dt/steps;
+    for(let i=0;i<steps;i++){
+      const physics=staticsPhysics(p),radius=physics.radius,upper=radius-.55,lower=1-radius;
+      staticsMotion.vy+=physics.acceleration*step;staticsMotion.depth+=staticsMotion.vy*step;
+      if(staticsMotion.depth<upper){staticsMotion.depth=upper;if(staticsMotion.vy<0)staticsMotion.vy=0;}
+      if(staticsMotion.depth>lower){staticsMotion.depth=lower;if(staticsMotion.vy>0)staticsMotion.vy=0;}
+    }
+  }
+  function bindStaticsInteraction(){
+    if(activeTopic().key!=='statics')return;
+    const canvas=$('#theory-canvas');if(!canvas)return;canvas.style.touchAction='none';canvas.style.cursor='grab';
+    let grabOffsetX=0,grabOffsetDepth=0;
+    const geometry=()=>{const rect=canvas.getBoundingClientRect(),p=state.params.statics||{};return {rect,...staticsGeometry(rect.width,rect.height,p)};};
+    canvas.addEventListener('pointerdown',ev=>{
+      const g=geometry(),x=ev.clientX-g.rect.left,y=ev.clientY-g.rect.top,cx=g.left+staticsMotion.x*(g.right-g.left),cy=g.surface+staticsMotion.depth*g.scale;
+      if(Math.hypot(x-cx,y-cy)>g.radiusPx+9)return;
+      ev.preventDefault();canvas.setPointerCapture(ev.pointerId);staticsMotion.dragging=true;staticsMotion.vy=0;grabOffsetX=x-cx;grabOffsetDepth=(y-g.surface)/g.scale-staticsMotion.depth;canvas.style.cursor='grabbing';
+    });
+    canvas.addEventListener('pointermove',ev=>{
+      if(!staticsMotion.dragging)return;ev.preventDefault();const g=geometry(),x=ev.clientX-g.rect.left,y=ev.clientY-g.rect.top,r=g.physics.radius;
+      const minX=g.left+g.radiusPx+6,maxX=g.right-g.radiusPx-6,cx=staticsClamp(x-grabOffsetX,minX,maxX);
+      staticsMotion.x=(cx-g.left)/(g.right-g.left);staticsMotion.depth=staticsClamp((y-grabOffsetDepth-g.surface)/g.scale,r-g.airGap,g.fluidDepth-r);staticsMotion.vy=0;
+    });
+    const finish=()=>{if(!staticsMotion.dragging)return;staticsMotion.dragging=false;staticsMotion.vy=0;staticsMotion.lastTime=performance.now();canvas.style.cursor='grab';};
+    canvas.addEventListener('pointerup',finish);canvas.addEventListener('pointercancel',finish);canvas.addEventListener('lostpointercapture',finish);
+  }
+
+  function conservationSetup(p){
+    const mass=Math.max(.01,Number(p.mass??2)),speed=Math.max(0,Number(p.speed??5)),maxHeight=Math.max(0,Number(p.height??3)),g=9.81,halfLength=20;
+    return {mass,speed,maxHeight,g,halfLength,curvature:maxHeight/(halfLength*halfLength),signature:`${speed}|${maxHeight}`};
+  }
+  function resetConservation(p,now){
+    const q=conservationSetup(p);
+    conservationMotion.x=0;conservationMotion.vx=q.speed;conservationMotion.lastTime=now;conservationMotion.signature=q.signature;conservationMotion.initialized=true;
+  }
+  function conservationValues(p){
+    const config=conservationSetup(p);if(!conservationMotion.initialized||conservationMotion.signature!==config.signature)resetConservation(p,performance.now());
+    const u=conservationMotion.x/config.halfLength,height=config.maxHeight*u*u,slope=2*config.curvature*conservationMotion.x,verticalSpeed=slope*conservationMotion.vx,speed=Math.hypot(conservationMotion.vx,verticalSpeed);
+    const kinetic=.5*config.mass*speed*speed,potential=config.mass*config.g*height,total=kinetic+potential;
+    return {...config,u,height,slope,verticalSpeed,speed,kinetic,potential,total,momentum:config.mass*speed};
+  }
+  function advanceConservation(p,now){
+    const config=conservationSetup(p);if(!conservationMotion.initialized||conservationMotion.signature!==config.signature)resetConservation(p,now);
+    const dt=conservationMotion.lastTime?staticsClamp((now-conservationMotion.lastTime)/1000,0,.05):0;conservationMotion.lastTime=now;
+    if(dt>0){const steps=Math.max(1,Math.ceil(dt/.006)),step=dt/steps;for(let i=0;i<steps;i++){
+      const slope=2*config.curvature*conservationMotion.x,acceleration=-config.g*slope/(1+slope*slope);
+      conservationMotion.vx+=acceleration*step;conservationMotion.x+=conservationMotion.vx*step;
+      if(conservationMotion.x>config.halfLength){conservationMotion.x=2*config.halfLength-conservationMotion.x;conservationMotion.vx=-Math.abs(conservationMotion.vx);}
+      else if(conservationMotion.x< -config.halfLength){conservationMotion.x=-2*config.halfLength-conservationMotion.x;conservationMotion.vx=Math.abs(conservationMotion.vx);}
+      const reachable=config.speed*config.speed/(2*config.g),turningPoint=config.maxHeight>0?config.halfLength*Math.sqrt(Math.min(1,reachable/config.maxHeight)):config.halfLength;
+      if(Math.abs(conservationMotion.x)>turningPoint&&turningPoint<config.halfLength){conservationMotion.x=Math.sign(conservationMotion.x)*turningPoint;conservationMotion.vx=0;}
+      const u=conservationMotion.x/config.halfLength,height=config.maxHeight*u*u,localSlope=2*config.curvature*conservationMotion.x,localSpeedSquared=Math.max(0,config.speed*config.speed-2*config.g*height),direction=Math.sign(conservationMotion.vx||acceleration);
+      conservationMotion.vx=direction*Math.sqrt(localSpeedSquared/(1+localSlope*localSlope));
+    }}
+    return conservationValues(p);
+  }
+
   function updateTheory() {
     const t=activeTopic(),p=state.params[t.key]||Object.fromEntries(t.params.map(x=>[x.id,x.value]));
     t.params.forEach(x=>{const input=$('#tp-'+x.id),out=$('#out-'+x.id);if(input&&out){input.value=p[x.id];out.textContent=(fmt(p[x.id],2)+' '+x.unit).trim();}});
@@ -547,23 +638,25 @@
     switch(t.key){
       case 'kinematics':{const x=p.v0*p.t+.5*p.a*p.t*p.t,v=p.v0+p.a*p.t;result='s=v_0t+\\frac{at^2}{2}='+n(x)+'\\,\\text{м}\\qquad v=v_0+at='+n(v)+'\\,\\text{м/с}';break;}
       case 'dynamics':result='a=\\frac{F}{m}=\\frac{'+n(p.force)+'}{'+n(p.mass)+'}='+n(p.force/p.mass)+'\\,\\text{м/с^2}';break;
-      case 'statics':result='p=\\rho gh='+n(p.rho)+'\\cdot9.81\\cdot'+n(p.depth)+'='+n(p.rho*9.81*p.depth/1000)+'\\,\\text{кПа}';break;
-      case 'conservation':result='E_k=\\frac{mv^2}{2}='+n(.5*p.mass*p.speed*p.speed)+'\\,\\text{Дж}\\qquad E_p=mgh='+n(p.mass*9.81*p.height)+'\\,\\text{Дж}';break;
+      case 'statics':{const q=staticsPhysics(p);result='m=\\rho_{\\text{т}}V='+n(q.mass)+'\\,\\text{кг}\\qquad V_{\\text{погр}}='+n(q.displacedVolume)+'\\,\\text{м}^3\\qquad F_A=\\rho_{\\text{ж}}gV_{\\text{погр}}='+n(q.buoyancy)+'\\,\\text{Н}\\qquad F_{\\text{тяж}}=mg='+n(q.weight)+'\\,\\text{Н}\\qquad F_{\\text{рез}}=F_{\\text{тяж}}-F_A+F_{\\text{сопр}}-N='+n(q.resultant)+'\\,\\text{Н}\\qquad a=F_{\\text{рез}}/m='+n(q.acceleration)+'\\,\\text{м/с}^2';suffix=q.support>.01?'Тело лежит на дне: реакция опоры N = '+fmt(q.support)+' Н.':Math.abs(q.resultant)<.01&&Math.abs(staticsMotion.vy)<.015?'Силы почти уравновешены.':staticsMotion.vy<-.015?'Тело всплывает.':staticsMotion.vy>.015?'Тело погружается.':q.resultant<0?'Равнодействующая направлена вверх.':'Равнодействующая направлена вниз.';break;}
+      case 'conservation':{const q=conservationValues(p),initialEnergy=.5*q.mass*q.speed*q.speed;result='E_0=\\frac{mV_{\\text{нач}}^2}{2}='+n(initialEnergy)+'\\,\\text{Дж}\\qquad E_k=\\frac{mv^2}{2}='+n(q.kinetic)+'\\,\\text{Дж}\\qquad E_p=mgh='+n(q.potential)+'\\,\\text{Дж}\\qquad E=E_k+E_p='+n(q.total)+'\\,\\text{Дж}\\qquad p=mv='+n(q.momentum)+'\\,\\text{кг·м/с}\\qquad H_{\\max}='+n(q.maxHeight)+'\\,\\text{м}';suffix='На гладкой дорожке E=E₀: масса масштабирует энергию и импульс, а скорость и Hмакс задают движение и обмен энергией.';break;}
       case 'waves':result='v=\\lambda\\nu='+n(p.wavelength)+'\\cdot'+n(p.frequency)+'='+n(p.wavelength*p.frequency)+'\\,\\text{м/с}';break;
       case 'molecular':result='p=\\frac{\\nu RT}{V}=\\frac{'+n(p.amount)+'\\cdot8.314\\cdot'+n(p.temperature)+'}{'+n(p.volume/1000)+'}='+n(p.amount*8.314*p.temperature/(p.volume/1000)/1000)+'\\,\\text{кПа}';break;
       case 'thermodynamics':result='\\Delta U=Q+A_{\\text{над}}='+n(p.heat)+'+'+n(p.work)+'='+n(p.heat+p.work)+'\\,\\text{Дж}';break;
       case 'electric':result='E=\\frac{kq}{r^2}='+n(8.988e9*p.charge*1e-6/(p.distance*p.distance))+'\\text{ Н/Кл}';break;
-      case 'current':{const I=p.voltage/(p.resistance+p.internal);result='I=\\frac{\\mathrm{E}}{R+r}=\\frac{'+n(p.voltage)+'}{'+n(p.resistance)+'+'+n(p.internal)+'}='+n(I)+'\\,\\text{А}\\qquad P=\\mathrm{E}I='+n(p.voltage*I)+'\\,\\text{Вт}';break;}
-      case 'magnetism':result='|\\mathrm{E}|=N\\frac{|\\Delta\\Phi|}{\\Delta t}='+n(p.turns)+'\\frac{'+n(p.flux)+'}{'+n(p.time)+'}='+n(p.turns*p.flux/p.time)+'\\,\\text{В}';break;
+      case 'current':{const I=p.voltage/(p.resistance+p.internal);result='I=\\frac{\\mathcal{E}}{R+r}=\\frac{'+n(p.voltage)+'}{'+n(p.resistance)+'+'+n(p.internal)+'}='+n(I)+'\\,\\text{А}\\qquad P=\\mathcal{E}I='+n(p.voltage*I)+'\\,\\text{Вт}';break;}
+      case 'magnetism':result='|\\mathcal{E}|=N\\frac{|\\Delta\\Phi|}{\\Delta t}='+n(p.turns)+'\\frac{'+n(p.flux)+'}{'+n(p.time)+'}='+n(p.turns*p.flux/p.time)+'\\,\\text{В}';break;
       case 'emwaves':result='T=2\\pi\\sqrt{LC}='+n(2*Math.PI*Math.sqrt(p.inductance*p.capacitance*1e-6))+'\\,\\text{с}';break;
-      case 'optics':{const image=p.focal*p.object/(p.object-p.focal);if(p.object===p.focal){result='d=F\\quad f\\to\\infty';suffix='Предмет в фокусе: изображение уходит на бесконечность.';}else{result='f=\\frac{Fd}{d-F}='+n(image)+'\\,\\text{см}';suffix=p.object<p.focal?'Изображение мнимое.':'Изображение действительное.';}break;}
+      case 'optics':{const atFocus=Math.abs(p.object-p.focal)<.015,image=atFocus?Infinity:p.focal*p.object/(p.object-p.focal);if(atFocus){result='d=F\\quad f\\to\\infty';suffix='Предмет в фокусе: изображение уходит на бесконечность.';}else{result='f=\\frac{Fd}{d-F}='+n(image)+'\\,\\text{см}';suffix=p.object<p.focal?'Изображение мнимое.':'Изображение действительное.';}break;}
       case 'photons':{const e=1239.842/p.wavelength;result='E_\\gamma=\\frac{hc}{\\lambda}='+n(e)+'\\,\\text{эВ}';suffix=e>=p.work?'Фотоэффект возможен.':'Энергии фотона недостаточно для выхода электрона.';break;}
       case 'atom':{const E1=-13.6/(p.levelA*p.levelA),E2=-13.6/(p.levelB*p.levelB),d=Math.abs(E2-E1);result='\\Delta E=|E_2-E_1|='+n(d)+'\\,\\text{эВ}';suffix=p.levelA===p.levelB?'Уровни совпадают: перехода нет.':E2>E1?'Атом поглощает фотон.':'Атом испускает фотон.';break;}
       case 'nucleus':{const x=100*2**(-p.time/p.halfLife);result='\\frac{N}{N_0}=2^{-\\frac{t}{T_{1/2}}}='+n(x)+'\\%';suffix='Осталось примерно '+fmt(x,0)+' из 100 ядер.';break;}
       default:result='F=ma';
     }
-    const out=$('#theory-result');if(out)out.innerHTML=PhysicsMath.render(result,true)+(suffix?'<span class="result-explain">'+safe(suffix)+'</span>':'');
-    const vis=$('#theory-output');if(vis)vis.innerHTML=PhysicsMath.render(result,true);
+    const equations=result.split('\\qquad').map(x=>x.trim()).filter(Boolean);
+    const equationRows=equations.map(eq=>{const split=eq.lastIndexOf('=');return split>0?`<div class="math-result-row"><div class="math-scroll">${PhysicsMath.render(eq.slice(0,split+1),true)}</div><strong class="math-value">${PhysicsMath.render(eq.slice(split+1),true)}</strong></div>`:`<div class="math-scroll">${PhysicsMath.render(eq,true)}</div>`;}).join('');
+    const out=$('#theory-result');if(out)out.innerHTML=`<div class="math-result-list">${equationRows}</div>`+(suffix?'<span class="result-explain">'+safe(suffix)+'</span>':'');
+    const vis=$('#theory-output');if(vis)vis.innerHTML=`<div class="math-result-list">${equationRows}</div>`;
   }
   function inductionAtTime(l,t){
     const omega=Math.PI/(2*Math.max(.05,Number(l.timeInterval)||.3)),phase=omega*t,u=1.35*Math.cos(phase),du=-1.35*omega*Math.sin(phase),den=1+u*u;
@@ -883,6 +976,20 @@
     if(same){showToast('Эти выводы уже соединены.');return;}
     c.wires.push({id:(c.nextWireId=(Number(c.nextWireId)||0)+1),a:{id:firstId,side:firstSide},b:{id:secondId,side:secondSide}});c.pendingWire=null;c.selectedId=secondId;lastCircuitWireCompleteAt=performance.now();renderLabControls();updateLabNumbers();persist();showToast('Провод соединён.');
   }
+  function circuitWireSegments(wire,w,h){
+    const c=state.lab.circuit,part=id=>c.elements.find(item=>item.id===id),aPart=part(wire.a.id),bPart=part(wire.b.id);if(!aPart||!bPart)return[];
+    const aScreen=circuitScreen(aPart,w,h),bScreen=circuitScreen(bPart,w,h),a={x:aScreen.x+(wire.a.side==='R'?30:-30),y:aScreen.y},b={x:bScreen.x+(wire.b.side==='R'?30:-30),y:bScreen.y},mid=(a.x+b.x)/2;
+    return [[a,{x:mid,y:a.y}],[{x:mid,y:a.y},{x:mid,y:b.y}],[{x:mid,y:b.y},b]];
+  }
+  function segmentDistance(x,y,a,b){const dx=b.x-a.x,dy=b.y-a.y,len2=dx*dx+dy*dy,t=len2?Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy)/len2)):0;return Math.hypot(x-a.x-t*dx,y-a.y-t*dy);}
+  function circuitWireAt(x,y,w,h,tolerance=10){
+    let found=null,min=tolerance;for(const wire of [...state.lab.circuit.wires].reverse())for(const [a,b] of circuitWireSegments(wire,w,h)){const distance=segmentDistance(x,y,a,b);if(distance<=tolerance&&(!found||distance<min)){min=distance;found=wire;}}
+    return found;
+  }
+  function removeCircuitWire(id){
+    const c=state.lab.circuit,before=c.wires.length;c.wires=c.wires.filter(wire=>String(wire.id)!==String(id));if(c.wires.length===before)return false;
+    renderLabControls();updateLabNumbers();persist();showToast('Провод удалён.');return true;
+  }
   function circuitPortSide(c,p,x,y,w,h,preferred){
     const point=circuitScreen(p,w,h),dx=x-point.x,explicit=Math.abs(Math.abs(dx)-30)<21;if(explicit)return dx<0?'L':'R';
     const degree=s=>c.wires.reduce((n,wire)=>n+Number((wire.a.id===p.id&&wire.a.side===s)||(wire.b.id===p.id&&wire.b.side===s)),0),wanted=preferred||'R';return degree(wanted)<=degree(wanted==='L'?'R':'L')?wanted:(wanted==='L'?'R':'L');
@@ -1044,45 +1151,127 @@
       if(state.running&&!(state.sim==='mechanics'||electricLabMode()))state.simulationTime+=dt;
       if(now-state.lastHudUpdate>250){state.lastHudUpdate=now;updateLabNumbers();}
     } else if(state.screen==='home')drawHero();
-    else if(state.screen==='theory')drawTheory();
+    else if(state.screen==='theory')drawTheory(now);
     if(state.screen==='home'||state.screen==='theory')state.simulationTime+=dt;
     requestAnimationFrame(drawLab);
   }
 
-  function drawTheory() {
-    const obj=canvas2d('theory-canvas');if(!obj)return;const {ctx,w,h}=obj,t=activeTopic(),p=state.params[t.key]||{};clearCanvas(ctx,w,h,'#171f1a');drawGrid(ctx,w,h,35);const base=h*.66;
-    ctx.strokeStyle='#61715e';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(30,base);ctx.lineTo(w-18,base);ctx.stroke();ctx.beginPath();ctx.moveTo(35,h-20);ctx.lineTo(35,18);ctx.stroke();
-    const graph=(fn,color='#c9f07a',width=2)=>{ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();for(let x=40;x<w-20;x+=2){const y=fn(x);if(x===40)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();};
+  function drawTheory(frameTime=performance.now()) {
+    const obj=canvas2d('theory-canvas');if(!obj)return;
+    const {ctx,w,h}=obj,t=activeTopic(),p=state.params[t.key]||{},now=state.simulationTime,base=h*.68;
+    clearCanvas(ctx,w,h,'#171f1a');drawGrid(ctx,w,h,35);
+    ctx.fillStyle='#aab8a5';ctx.font='9px var(--sans)';ctx.strokeStyle='#61715e';ctx.lineWidth=1;
+    if(t.key!=='statics'){ctx.beginPath();ctx.moveTo(30,base);ctx.lineTo(w-18,base);ctx.stroke();ctx.beginPath();ctx.moveTo(35,h-20);ctx.lineTo(35,18);ctx.stroke();}
+    const text=(s,x=42,y=18,color='#c3d1bb')=>{ctx.fillStyle=color;ctx.font='9px var(--sans)';ctx.fillText(s,x,y);};
+    const plot=(fn,color='#c9f07a',width=2)=>{ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();let started=false;for(let x=40;x<w-20;x+=2){const y=fn(x);if(!Number.isFinite(y))continue;if(!started){ctx.moveTo(x,y);started=true;}else ctx.lineTo(x,y);}ctx.stroke();};
+    const dot=(x,y,r=6,color='#c9f07a')=>{ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();};
+    const reflect=(n,length)=>{const q=((n%(2*length))+2*length)%(2*length);return q<=length?q:2*length-q;};
     if(t.key==='kinematics'){
-      const v0=p.v0||5,a=p.a||1,tm=p.t||4,scaleY=(h-70)/Math.max(2,v0*tm+.5*a*tm*tm+3);graph(x=>base-Math.max(-h*.12,Math.min(h*.53,(v0*(x-40)/(w-65)*tm+.5*a*((x-40)/(w-65)*tm)**2)*scaleY)));ctx.fillStyle='#a2af9b';ctx.font='9px var(--sans)';ctx.fillText('x(t) = x₀ + v₀t + ½at²',46,18);ctx.fillText('Площадь под v(t) равна перемещению',46,h-14);
-    } else if(t.key==='dynamics'||t.key==='current'||t.key==='electric'){
-      graph(x=>base-Math.sin((x-40)/(w-60)*Math.PI*2)*30-38,'#6d8770',1);
-      const mass=p.mass||3;const force=p.force||12;const v=state.simulationTime*.55;const bx=50+((v*30)%(w-100)),by=base-42;
-      ctx.fillStyle='#43533f';ctx.fillRect(45,base,w-64,h-base-20);ctx.fillStyle='#f1a96c';ctx.beginPath();ctx.arc(bx,by,13,0,7);ctx.fill();drawArrow(ctx,bx,by,bx+Math.min(85,force*2),by,'#c9f07a',2,7);ctx.fillStyle='#c3d1bb';ctx.font='9px var(--sans)';ctx.fillText(`a = F/m = ${fmt(force/mass)} м/с²`,42,18);
+      const v0=Number(p.v0??5),a=Number(p.a??2),duration=Math.max(.1,Number(p.t??4)),position=u=>v0*u+.5*a*u*u;
+      const values=Array.from({length:41},(_,i)=>position(duration*i/40)),lo=Math.min(0,...values),hi=Math.max(0,...values),span=Math.max(1,hi-lo),top=34,bottom=base+5;
+      const px=u=>40+(w-63)*u/duration,py=u=>bottom-(position(u)-lo)/span*(bottom-top);
+      ctx.strokeStyle='#465346';ctx.beginPath();for(let i=0;i<=4;i++){const yy=top+(bottom-top)*i/4;ctx.moveTo(38,yy);ctx.lineTo(w-20,yy);}ctx.stroke();
+      ctx.strokeStyle='#c9f07a';ctx.lineWidth=2;ctx.beginPath();for(let i=0;i<=100;i++){const u=duration*i/100,x=px(u),y=py(u);if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);}ctx.stroke();
+      const elapsed=now%duration;dot(px(elapsed),py(elapsed),5,'#f2a96c');text(`Положение тела: ${fmt(position(elapsed))} м · время: ${fmt(elapsed)} с`);text(`Начальная скорость ${fmt(v0)} м/с · ускорение ${fmt(a)} м/с² · интервал ${fmt(duration)} с`,42,h-31);
+    } else if(t.key==='dynamics'){
+      const force=Number(p.force??12),mass=Math.max(.01,Number(p.mass??3)),acc=force/mass,runTime=now%4,maxAcc=36/.5;
+      const roadY=base+2,travel=Math.min(w*.57,.5*acc*runTime*runTime/maxAcc*w*1.25),bx=48+travel,by=base-34;
+      ctx.fillStyle='#29382d';ctx.fillRect(38,roadY,w-55,h-roadY-22);ctx.strokeStyle='#687762';ctx.beginPath();ctx.moveTo(38,roadY);ctx.lineTo(w-18,roadY);ctx.stroke();
+      ctx.fillStyle='#f2a96c';ctx.fillRect(bx-13,by-13,26,26);ctx.strokeStyle='#f6c18c';ctx.strokeRect(bx-13,by-13,26,26);
+      drawArrow(ctx,bx+14,by,bx+14+Math.min(w*.28,force/36*w*.28),by,'#c9f07a',2,7);
+      text(`Сила ${fmt(force)} Н · масса ${fmt(mass)} кг · ускорение ${fmt(acc)} м/с²`);text(`За ${fmt(runTime)} с тело прошло ${fmt(.5*acc*runTime*runTime)} м`,42,h-31);
     } else if(t.key==='statics'){
-      const yy=42,level=base+8;ctx.fillStyle='#263d43';ctx.fillRect(w*.4,yy,w*.34,level-yy);ctx.fillStyle='#8cc3d5';ctx.globalAlpha=.5;ctx.fillRect(w*.4,level,w*.34,10);ctx.globalAlpha=1;
-      for(let i=0;i<5;i++)drawArrow(ctx,w*.46+i*w*.05,level-16,w*.46+i*w*.05,yy+26,'#8db9fa',1,5);ctx.fillStyle='#d5e6d5';ctx.beginPath();ctx.arc(w*.56,level-33,13,0,7);ctx.fill();ctx.fillStyle='#a1b5a1';ctx.font='9px var(--sans)';ctx.fillText(`p = ρgh = ${fmt((p.rho||1000)*9.81*(p.depth||4)/1000)} кПа`,16,18);
+      advanceStatics(p,frameTime);const g=staticsGeometry(w,h,p),q=staticsPhysics(p),cx=g.left+staticsMotion.x*(g.right-g.left),cy=g.surface+staticsMotion.depth*g.scale,r=g.radiusPx;
+      ctx.fillStyle=`rgba(87,164,194,${.16+.15*staticsClamp((q.liquidDensity-300)/1300,0,1)})`;ctx.fillRect(g.left,g.surface,g.right-g.left,g.bottom-g.surface);
+      ctx.strokeStyle='#789486';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(g.left,g.top);ctx.lineTo(g.left,g.bottom);ctx.lineTo(g.right,g.bottom);ctx.lineTo(g.right,g.top);ctx.stroke();
+      ctx.strokeStyle='#a8d0d5';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(g.left,g.surface);ctx.lineTo(g.right,g.surface);ctx.stroke();
+      ctx.fillStyle='#aab8a5';ctx.font='10px var(--sans)';ctx.fillText(`Жидкость · ρ = ${fmt(q.liquidDensity,0)} кг/м³`,g.left+7,g.top+13);ctx.fillStyle='#c9f07a';ctx.font='9px var(--sans)';ctx.fillText(`Тело · ρ = ${fmt(q.bodyDensity,0)} · ${q.support>.01?'на дне':Math.abs(q.resultant)<.01&&Math.abs(staticsMotion.vy)<.015?'равновесие':staticsMotion.vy<-.015?'всплывает':staticsMotion.vy>.015?'тонет':q.resultant<0?'идёт вверх':'идёт вниз'}`,g.left+7,g.top+27);ctx.fillStyle='#b8d5dc';ctx.font='9px var(--sans)';ctx.fillText('уровень жидкости',g.right-84,g.surface-7);
+      ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();ctx.fillStyle='#d6eead';ctx.fillRect(cx-r,cy-r,2*r,2*r);ctx.beginPath();ctx.rect(g.left,g.surface,g.right-g.left,g.bottom-g.surface);ctx.clip();ctx.fillStyle='rgba(116,190,207,.84)';ctx.fillRect(cx-r,cy-r,2*r,2*r);ctx.restore();
+      ctx.strokeStyle='#edf8da';ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#19231b';ctx.font='9px var(--sans)';ctx.textAlign='center';ctx.fillText('тело',cx,cy+3);ctx.textAlign='start';
+      const scaleForce=Math.max(q.weight,q.buoyancy,.01),length=f=>f>.005?8+42*Math.sqrt(staticsClamp(f/scaleForce,0,1)):0;
+      if(q.weight>.005){const x=cx+r*.58,y=cy+r*.18+length(q.weight);drawArrow(ctx,x,cy+r*.18,x,y,'#f2a96c',2,6);text('mg',x+3,y+3,'#f2a96c');}
+      if(q.buoyancy>.005){const x=cx-r*.58,y=cy-r*.18-length(q.buoyancy);drawArrow(ctx,x,cy-r*.18,x,y,'#8db9fa',2,6);text('Fₐ',x-16,y-3,'#8db9fa');}
+      if(Math.abs(q.drag)>.03){const x=cx+r*.88,y=cy+Math.sign(q.drag)*length(Math.abs(q.drag));drawArrow(ctx,x,cy,x,y,'#c2a5ff',1.6,5);text('Fсопр',x+3,y+3,'#c2a5ff');}
+      const netLength=Math.abs(q.resultant)>.01?Math.max(6,40*Math.sqrt(staticsClamp(Math.abs(q.resultant)/scaleForce,0,1))):0;
+      if(netLength){const y=cy+Math.sign(q.resultant)*netLength;drawArrow(ctx,cx,cy,cx,y,'#c9f07a',2.4,7);text('ΣF',cx+4,y+3,'#c9f07a');}
+      if(q.support>.01){const x=cx-r*.9,y=cy+r*.2-length(q.support);drawArrow(ctx,x,cy+r*.2,x,y,'#d5ddd2',1.7,5);text('N',x-10,y-3,'#d5ddd2');}
+      const readout=$('#theory-result');if(readout&&frameTime-staticsMotion.readoutAt>140){staticsMotion.readoutAt=frameTime;updateTheory();}
     } else if(t.key==='conservation'){
-      const v=p.speed||5,m=p.mass||2,energy=.5*m*v*v;
-      for(let i=0;i<12;i++){const a=i/12*Math.PI*2,x=w*.5+Math.cos(a)*55,y=base-56+Math.sin(a)*25;ctx.fillStyle=colors[i%6];ctx.beginPath();ctx.arc(x,y,4,0,7);ctx.fill();}
-      ctx.strokeStyle='#819277';ctx.beginPath();ctx.ellipse(w*.5,base-56,65,32,0,0,7);ctx.stroke();drawArrow(ctx,w*.26,base-56,w*.40,base-56,'#f2a96c',2,7);ctx.fillStyle='#c4d3bd';ctx.font='9px var(--sans)';ctx.fillText(`Ek = ½mv² = ${fmt(energy)} Дж`,16,18);ctx.fillText('Импульс системы до = после',16,h-15);
-    } else if(t.key==='waves'||t.key==='emwaves'){
-      const amp=(p.amplitude||1)*h*.13,f=p.frequency||1.5,lambda=p.wavelength||2,period=(state.simulationTime%5)*f;
-      graph(x=>base-amp*Math.sin((x-40)/(w-60)*w/lambda*2*Math.PI-period*2*Math.PI),'#c9f07a',2);ctx.fillStyle='#8db9fa';for(let x=46;x<w-20;x+=19){const y=base-amp*Math.sin((x-40)/(w-60)*w/lambda*2*Math.PI-period*2*Math.PI);ctx.beginPath();ctx.arc(x,y,2.4,0,7);ctx.fill();}ctx.fillStyle='#a8b7a0';ctx.font='9px var(--sans)';ctx.fillText(`λ = ${fmt(lambda)} м   ·   ν = ${fmt(f)} Гц   ·   v = ${fmt(lambda*f)} м/с`,42,18);
-    } else if(t.key==='molecular'||t.key==='thermodynamics'){
-      const N=42,temp=p.temperature||300;for(let i=0;i<N;i++){const a=i*2.4+state.simulationTime*(.2+temp/500),rad=18+(i*37%82);const x=w*.51+Math.cos(a)*rad*1.5,y=h*.46+Math.sin(a*.83)*rad*.72;ctx.fillStyle=i%5===0?'#f2a96c':'#8db9fa';ctx.beginPath();ctx.arc(x,y,2.1+(i%3),0,7);ctx.fill();}
-      ctx.strokeStyle='#60725c';ctx.strokeRect(w*.33,h*.19,w*.38,h*.54);ctx.fillStyle='#cbd8c5';ctx.font='9px var(--sans)';ctx.fillText(t.key==='molecular'?`pV = νRT · T = ${fmt(temp,0)} K`:'ΔU = Q + A′',40,18);
+      const q=advanceConservation(p,frameTime),cx=w*.48,halfW=w*.34,bottomY=base-8,curveHeight=Math.min(h*.43,base-32),pixelsPerMeter=curveHeight/14,trackLift=q.maxHeight*pixelsPerMeter,x=cx+q.u*halfW,y=bottomY-q.height*pixelsPerMeter;
+      ctx.strokeStyle='#819277';ctx.lineWidth=3;ctx.beginPath();for(let i=0;i<=80;i++){const u=-1+2*i/80,xx=cx+halfW*u,yy=bottomY-trackLift*u*u;if(i)ctx.lineTo(xx,yy);else ctx.moveTo(xx,yy);}ctx.stroke();
+      ctx.strokeStyle='#6d7d68';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cx-halfW,bottomY- trackLift);ctx.lineTo(cx-halfW,bottomY+8);ctx.moveTo(cx+halfW,bottomY-trackLift);ctx.lineTo(cx+halfW,bottomY+8);ctx.stroke();
+      ctx.strokeStyle='#485746';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(cx-halfW,bottomY+5);ctx.lineTo(cx+halfW,bottomY+5);ctx.stroke();dot(x,y-7,8,'#f2a96c');
+      const dx=q.vx*halfW/q.halfLength,dy=-q.slope*q.vx*pixelsPerMeter,norm=Math.hypot(dx,dy);if(norm>.05)drawArrow(ctx,x,y-7,x+dx/norm*25,y-7+dy/norm*25,'#f2a96c',1.8,6);
+      const barX=w*.88,barW=Math.max(9,w*.035),barH=Math.min(h*.45,72),barTop=base-barH,energyFraction=q.total?staticsClamp(q.kinetic/q.total,0,1):0,potentialFraction=q.total?staticsClamp(q.potential/q.total,0,1):0;
+      ctx.strokeStyle='#53614e';ctx.strokeRect(barX,barTop,barW,barH);ctx.fillStyle='#8db9fa';ctx.fillRect(barX+1,barTop+barH*(1-potentialFraction),barW-2,barH*potentialFraction);ctx.fillStyle='#f2a96c';ctx.fillRect(barX+1,barTop,barW-2,barH*energyFraction);
+      text(`Vнач = ${fmt(q.speed)} м/с · h = ${fmt(q.height)} м`,42,18);text(`Hмакс = ${fmt(q.maxHeight)} м · a = ${fmt(q.curvature,4)} м⁻¹`,42,31);
+      const readout=$('#theory-result');if(readout&&frameTime-conservationMotion.readoutAt>140){conservationMotion.readoutAt=frameTime;updateTheory();}
+    } else if(t.key==='waves'){
+      const amplitude=Number(p.amplitude??1),frequency=Number(p.frequency??1.5),lambda=Number(p.wavelength??2),amp=amplitude*h*.11,pxPerM=(w-70)/Math.max(4,lambda*4),phase=2*Math.PI*frequency*now;
+      const wave=x=>base-amp*Math.sin((x-40)/pxPerM*2*Math.PI-phase);plot(wave,'#c9f07a',2);
+      ctx.fillStyle='#8db9fa';for(let x=48;x<w-20;x+=18)dot(x,wave(x),2.5,'#8db9fa');
+      text(`Амплитуда ${fmt(amplitude)} м · частота ${fmt(frequency)} Гц · длина волны ${fmt(lambda)} м`);text(`Скорость распространения ${fmt(lambda*frequency)} м/с · фаза меняется со временем`,42,h-31);
+    } else if(t.key==='molecular'){
+      const temp=Number(p.temperature??300),volume=Number(p.volume??12),amount=Number(p.amount??1),size=.36+.46*(volume-4)/16,left=(w-size*w)/2,boxW=size*w,boxH=h*(.35+.17*(volume-4)/16),top=(h-boxH)/2+8,innerW=boxW-18,innerH=boxH-18,count=Math.max(3,Math.min(58,Math.round(amount*24))),rms=Math.sqrt(3*8.314*temp/.029),speedScale=rms*.14;
+      ctx.strokeStyle='#60725c';ctx.lineWidth=1.3;ctx.strokeRect(left,top,boxW,boxH);
+      for(let i=0;i<count;i++){const sx=((i*37)%101)/101,sy=((i*61+17)%103)/103,vx=(.45+(i*13%17)/17)*speedScale*(i%2?1:-1),vy=(.45+(i*7%19)/19)*speedScale*(i%3?1:-1),x=left+9+reflect(sx*innerW+vx*now,innerW),y=top+9+reflect(sy*innerH+vy*now,innerH);dot(x,y,2+(i%3===0?1:0),i%6===0?'#f2a96c':'#8db9fa');}
+      const pressure=amount*8.314*temp/(volume/1000)/1000;text(`Температура ${fmt(temp,0)} К · энергия молекулы ${fmt(1.5*1.380649e-23*temp/1.60218e-19,3)} эВ`);text(`Давление около ${fmt(pressure)} кПа · частиц в модели: ${count}`,42,h-31);
+    } else if(t.key==='thermodynamics'){
+      const heat=Number(p.heat??400),work=Number(p.work??150),mass=Math.max(.01,Number(p.mass??1)),delta=heat+work,temp=Math.max(50,Math.min(2200,293+delta/(900*mass))),left=w*.31,top=h*.27,fullW=w*.38,compression=Math.max(.08,Math.min(.32,work/1200*.24)),piston=left+fullW*(.78-compression),gasW=piston-left,phase=now*Math.sqrt(temp/293);
+      ctx.strokeStyle='#60725c';ctx.strokeRect(left,top,fullW,h*.42);ctx.fillStyle='rgba(242,169,108,.15)';ctx.fillRect(left+2,top+2,Math.max(5,gasW-3),h*.415);ctx.fillStyle='#94a58d';ctx.fillRect(piston-5,top-3,10,h*.45);
+      const count=22;for(let i=0;i<count;i++){const sx=((i*37)%97)/97,sy=((i*61+9)%89)/89,x=left+9+reflect(sx*Math.max(8,gasW-18)+Math.sin(i*5+phase)*14,Math.max(8,gasW-18)),y=top+8+reflect(sy*(h*.42-16)+Math.cos(i*3+phase)*12,h*.42-16);dot(x,y,2,i%5===0?'#f2a96c':'#8db9fa');}
+      drawArrow(ctx,w*.2,top+h*.2,w*.29,top+h*.2,heat>=0?'#f2a96c':'#8db9fa',2,6);drawArrow(ctx,piston+18,top+h*.21,work>=0?piston-15:piston+49,top+h*.21,'#c9f07a',2,6);
+      text(`Полученное тепло ${fmt(heat)} Дж · работа над телом ${fmt(work)} Дж · изменение энергии ${fmt(delta)} Дж`);text(`Изменение температуры ${fmt(temp-293)} К · масса ${fmt(mass)} кг · модель: алюминий, c = 900 Дж/(кг·К)`,42,h-31);
+    } else if(t.key==='electric'){
+      const charge=Number(p.charge??25),distance=Number(p.distance??2),cx=w*.32,cy=h*.48,radius=10,probeX=cx+Math.min(w*.49,Math.max(24,distance/10*w*.49)),field=8.988e9*charge*1e-6/(distance*distance),maxField=8.988e9*80e-6/.2**2,strength=Math.sqrt(Math.min(1,field/maxField));
+      for(let i=0;i<12;i++){const angle=i*Math.PI/6,reach=Math.min(w*.48,65+strength*25);ctx.strokeStyle=`rgba(141,185,250,${.16+strength*.24})`;ctx.beginPath();ctx.arc(cx,cy,reach,angle-.18,angle+1.05);ctx.stroke();const ax=cx+Math.cos(angle)*reach,ay=cy+Math.sin(angle)*reach;drawArrow(ctx,ax,ay,ax+Math.cos(angle)*12,ay+Math.sin(angle)*12,'#8db9fa',1.3,4);}
+      dot(cx,cy,radius,'#f2a96c');text('+q',cx-5,cy+3,'#182019');ctx.strokeStyle='#586a53';ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(probeX,cy);ctx.stroke();ctx.setLineDash([]);drawArrow(ctx,probeX-12,cy,probeX+Math.max(10,strength*38),cy,'#c9f07a',1.8,6);dot(probeX,cy,5,'#dce8d4');
+      text(`Напряжённость у пробного заряда: ${fmt(field/1e6,3)} МН/Кл`);text(`Заряд ${fmt(charge,0)} мкКл · расстояние ${fmt(distance)} м · стрелка показывает поле`,42,h-31);
+    } else if(t.key==='current'){
+      const emf=Number(p.voltage??9),resistance=Math.max(.01,Number(p.resistance??8)),internal=Number(p.internal??.8),current=emf/(resistance+internal),power=current*current*resistance,left=w*.22,right=w*.78,top=h*.34,bottom=h*.69,lampX=right,lampY=(top+bottom)/2,brightness=Math.min(1,Math.sqrt(power/576));
+      ctx.strokeStyle='#a4b49d';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(right,top);ctx.lineTo(right,lampY-15);ctx.moveTo(right,lampY+15);ctx.lineTo(right,bottom);ctx.lineTo(left,bottom);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.stroke();ctx.strokeStyle='#f3f0d2';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left-6,top+22);ctx.lineTo(left+6,top+22);ctx.moveTo(left,top+11);ctx.lineTo(left,bottom-12);ctx.stroke();ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(left-6,bottom-12);ctx.lineTo(left+6,bottom-12);ctx.stroke();
+      const resistorX=(left+right)/2;ctx.strokeStyle='#d4dfd0';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left,top);for(let i=0;i<7;i++)ctx.lineTo(left+(resistorX-left)*(i+1)/7,top+(i%2?8:-8));ctx.lineTo(resistorX,top);ctx.stroke();
+      ctx.save();ctx.shadowColor='#f7dc66';ctx.shadowBlur=brightness*30;ctx.fillStyle=`rgba(248,221,96,${.12+brightness*.72})`;ctx.beginPath();ctx.arc(lampX,lampY,15,0,Math.PI*2);ctx.fill();ctx.restore();ctx.strokeStyle='#e8e0af';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(lampX,lampY,15,0,Math.PI*2);ctx.moveTo(lampX-6,lampY-6);ctx.lineTo(lampX+6,lampY+6);ctx.moveTo(lampX+6,lampY-6);ctx.lineTo(lampX-6,lampY+6);ctx.stroke();
+      const loop=[{x:left,y:top},{x:right,y:top},{x:right,y:bottom},{x:left,y:bottom}],loopL=2*((right-left)+(bottom-top));for(let i=0;i<7;i++){const q=(now*current*30+i/7*loopL)%loopL;let x,y;if(q<right-left){x=left+q;y=top;}else if(q<right-left+bottom-top){x=right;y=top+q-(right-left);}else if(q<2*(right-left)+bottom-top){x=right-(q-(right-left+bottom-top));y=bottom;}else{x=left;y=bottom-(q-2*(right-left)-bottom+top);}dot(x,y,2,'#c9f07a');}
+      text(`Ток ${fmt(current)} А · мощность нагрузки ${fmt(power)} Вт`);text(`Яркость лампы меняется вместе с мощностью на нагрузке`,42,h-31);
     } else if(t.key==='magnetism'){
-      const cx=w*.52,cy=h*.48;for(let r=1;r<8;r++){ctx.strokeStyle=`rgba(141,185,250,${.23-r*.02})`;ctx.beginPath();ctx.arc(cx,cy,r*19,0,Math.PI*2);ctx.stroke();}ctx.fillStyle='#f2a96c';ctx.fillRect(cx-4,cy-4,8,8);drawArrow(ctx,cx-85,cy+20,cx-8,cy+20,'#c9f07a',1.5,5);ctx.fillStyle='#c3d2bd';ctx.font='9px var(--sans)';ctx.fillText('|ℰ| = N·|ΔΦ|/Δt',42,18);
+      const turns=Number(p.turns??100),flux=Number(p.flux??.18),duration=Math.max(.05,Number(p.time??.3)),emf=turns*flux/duration,phase=2*Math.PI*now/Math.max(.5,duration*4),direction=Math.cos(phase)>=0?1:-1,cx=w*.64,cy=h*.49,coilW=w*.24,loopCount=Math.max(3,Math.min(11,Math.round(3+turns/65)));
+      ctx.fillStyle='#6c3d32';ctx.fillRect(w*.19,cy-18,w*.19,36);ctx.fillStyle='#f2a96c';ctx.fillRect(w*.19,cy-18,w*.095,36);ctx.fillStyle='#c8d6c3';ctx.font='9px var(--sans)';ctx.fillText('N',w*.225,cy+4);ctx.fillText('S',w*.33,cy+4);
+      ctx.strokeStyle='#c9f07a';ctx.lineWidth=2;for(let i=0;i<loopCount;i++){const x=cx-coilW/2+i*coilW/(loopCount-1);ctx.beginPath();ctx.ellipse(x,cy,5,34,0,0,Math.PI*2);ctx.stroke();}
+      ctx.strokeStyle='#8db9fa';ctx.lineWidth=1.2;const fluxCount=Math.max(1,Math.min(7,Math.round(flux*8)));for(let i=0;i<fluxCount;i++){const yy=cy+(i-(fluxCount-1)/2)*9,dir=direction;drawArrow(ctx,cx-24*dir,yy,cx+24*dir,yy,'#8db9fa',1.2,4);}
+      drawArrow(ctx,cx+coilW/2+16,cy+42*direction,cx+coilW/2+16,cy-42*direction,'#f2a96c',2,6);text(`Индуцированная ЭДС: ${fmt(emf)} В`);text(`Витков: ${fmt(turns,0)} · изменение потока: ${fmt(flux)} Вб · время: ${fmt(duration)} с · направление меняется`,42,h-31);
+    } else if(t.key==='emwaves'){
+      const inductance=Number(p.inductance??1.2),capacitance=Number(p.capacitance??60)*1e-6,period=2*Math.PI*Math.sqrt(inductance*capacitance),omega=2*Math.PI/period,phase=omega*now,q=Math.cos(phase),current=Math.sin(phase),left=w*.2,right=w*.78,cy=h*.49;
+      const coilStart=right-84;ctx.strokeStyle='#a4b49d';ctx.lineWidth=1.7;ctx.beginPath();ctx.moveTo(left,cy-28);ctx.lineTo(coilStart,cy-28);ctx.moveTo(left,cy+28);ctx.lineTo(right,cy+28);ctx.moveTo(left,cy-28);ctx.lineTo(left,cy-8);ctx.moveTo(left,cy+8);ctx.lineTo(left,cy+28);ctx.moveTo(right,cy-28);ctx.lineTo(right,cy+28);ctx.stroke();
+      ctx.strokeStyle='#d8e2d2';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(left-8,cy-8);ctx.lineTo(left+8,cy-8);ctx.moveTo(left-8,cy+8);ctx.lineTo(left+8,cy+8);ctx.stroke();
+      ctx.strokeStyle='#c9f07a';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(coilStart,cy-28);for(let i=0;i<7;i++){const x=coilStart+i*12;ctx.quadraticCurveTo(x+6,cy-28+(i%2?14:-14),x+12,cy-28);}ctx.stroke();
+      const barY=base-4,barH=48,barX=w*.28,barW=w*.46;ctx.strokeStyle='#53614e';ctx.strokeRect(barX,barY-barH,barW,barH);ctx.fillStyle='#8db9fa';ctx.fillRect(barX,barY-barH,barW* q*q,barH);ctx.fillStyle='#c9f07a';ctx.fillRect(barX+barW*q*q,barY-barH,barW*current*current,barH);
+      text(`Период ${fmt(period*1000,2)} мс · собственная частота ${fmt(1/period,1)} Гц`);text(`Заряд конденсатора ${fmt(q)} · ток катушки ${fmt(current)} · энергия сохраняется`,42,h-31);
     } else if(t.key==='optics'){
-      const cx=w*.53,cy=base-23,f=p.focal||3,d=p.object||8,di=f*d/(d-f),sc=Math.min(w/20,h/11);const x1=cx-d*sc,x2=cx+di*sc,y1=cy-46,y2=cy-(di/d)*46;
-      ctx.strokeStyle='#82d9c0';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx,30);ctx.quadraticCurveTo(cx+9,cy,cx,base+15);ctx.stroke();drawArrow(ctx,x1,cy,x1,y1,'#f2a96c',2,6);if(x2>40&&x2<w-20)drawArrow(ctx,x2,cy,x2,y2,d>f?'#8db9fa':'#c2a5ff',2,6);ctx.strokeStyle='#c9f07a';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(cx,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#a6b29f';ctx.font='9px var(--sans)';ctx.fillText('1/F = 1/d + 1/f',42,18);
+      const focal=Number(p.focal??3),distance=Number(p.object??8),cx=w*.58,cy=base-10,scale=Math.min(13,w*.032,(cx-45)/Math.max(distance,.1)),imageDistance=Math.abs(distance-focal)<.015?Math.sign(distance-focal||1)*w*.34:focal*distance/(distance-focal),clampedImage=Math.max(-w*.38,Math.min(w*.38,imageDistance*scale)),xObj=cx-distance*scale,xImage=cx+clampedImage,mag=-clampedImage/(distance*scale),objTip=cy-42,imgTip=cy-Math.max(-2.8,Math.min(2.8,mag))*42;
+      ctx.strokeStyle='#82d9c0';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx,28);ctx.quadraticCurveTo(cx+13,cy,cx,base+12);ctx.stroke();ctx.strokeStyle='#53664f';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(38,cy);ctx.lineTo(w-20,cy);ctx.stroke();
+      ctx.strokeStyle='#71816d';ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(cx-focal*scale,cy-7);ctx.lineTo(cx-focal*scale,cy+7);ctx.moveTo(cx+focal*scale,cy-7);ctx.lineTo(cx+focal*scale,cy+7);ctx.stroke();ctx.setLineDash([]);
+      drawArrow(ctx,xObj,cy,xObj,objTip,'#f2a96c',2,6);if(Math.abs(distance-focal)>.015&&xImage>38&&xImage<w-18&&Number.isFinite(imgTip))drawArrow(ctx,xImage,cy,xImage,imgTip,distance>focal?'#8db9fa':'#c2a5ff',2,6);
+      ctx.strokeStyle='#c9f07a';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(xObj,objTip);ctx.lineTo(cx,objTip);if(Math.abs(distance-focal)>.015)ctx.lineTo(xImage,imgTip);ctx.stroke();ctx.setLineDash([]);
+      text(`Фокусное расстояние ${fmt(focal)} см · предмет ${fmt(distance)} см · изображение ${Math.abs(distance-focal)<.015?'∞':fmt(imageDistance)} см`);text(Math.abs(distance-focal)<.015?'Предмет в фокусе: лучи после линзы параллельны':distance>focal?'Действительное перевёрнутое изображение':'Мнимое прямое изображение',42,h-31);
     } else if(t.key==='photons'){
-      const energy=1239.842/(p.wavelength||450),y=base-52;ctx.strokeStyle='#76856e';ctx.beginPath();ctx.moveTo(35,base);ctx.lineTo(w-20,base);ctx.stroke();for(let i=0;i<8;i++){const x=55+i*((w-95)/8),ht=15+(i%4)*13;ctx.strokeStyle=colors[i%6]+'9a';ctx.beginPath();ctx.moveTo(x,base);ctx.lineTo(x,base-ht);ctx.stroke();ctx.fillStyle=colors[i%6];ctx.beginPath();ctx.arc(x,base-ht,3,0,7);ctx.fill();}drawArrow(ctx,52,y,w*.74,y,'#c9f07a',1.5,6);ctx.fillStyle='#d3dfce';ctx.font='9px var(--sans)';ctx.fillText(`Eф = hc/λ = ${fmt(energy,2)} эВ`,42,18);ctx.fillText('фотон → энергия электрону',42,h-14);
+      const wavelength=Number(p.wavelength??450),work=Number(p.work??2),energy=1239.842/wavelength,kinetic=Math.max(0,energy-work),emits=energy>=work,hue=Math.max(0,Math.min(280,(700-wavelength)/320*280)),photonColor=`hsl(${hue},85%,65%)`,surface=w*.65,phase=now*1.6;
+      ctx.strokeStyle='#9ba993';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(surface,base-38);ctx.lineTo(surface,base+8);ctx.stroke();ctx.strokeStyle='#8b9a83';ctx.beginPath();ctx.moveTo(38,base+8);ctx.lineTo(w-18,base+8);ctx.stroke();
+      for(let i=0;i<6;i++){const x=38+((now*65+i*62)%(surface-58));ctx.strokeStyle=photonColor;ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(x,base-25+i%3*13);ctx.lineTo(x+12,base-25+i%3*13);ctx.stroke();dot(x+12,base-25+i%3*13,3,photonColor);}
+      if(emits){const ex=surface+Math.min(w*.23,Math.sqrt(kinetic)*40),ey=base-22-Math.min(h*.33,Math.sqrt(kinetic)*18)*(0.5+.5*Math.sin(phase));drawArrow(ctx,surface+7,base-20,ex,ey,'#c9f07a',2,6);dot(ex,ey,5,'#c9f07a');}else{text('Энергии фотона недостаточно для выхода электрона',surface-52,base-55,'#f2a96c');}
+      text(`Энергия фотона ${fmt(energy,2)} эВ · работа выхода ${fmt(work)} эВ`);text(emits?`Кинетическая энергия электрона ${fmt(kinetic,2)} эВ · электрон испускается`:'Фотоэффект отсутствует',42,h-31);
     } else if(t.key==='atom'){
-      const lv1=p.levelA||1,lv2=p.levelB||3,lev=n=>base+13.6/n**2*3.2;for(let n=1;n<=6;n++){const yy=lev(n);ctx.strokeStyle=n===lv1?'#c9f07a':'#41503f';ctx.beginPath();ctx.moveTo(w*.25,yy);ctx.lineTo(w*.76,yy);ctx.stroke();ctx.fillStyle='#acb9a6';ctx.font='9px var(--mono)';ctx.fillText(`n = ${n}`,w*.19,yy+3);}drawArrow(ctx,w*.52,lev(lv1)-3,w*.52,lev(lv2)+3,'#c2a5ff',2,7);ctx.fillStyle='#cbd8c4';ctx.font='9px var(--sans)';ctx.fillText(`ΔE = ${fmt(Math.abs(-13.6/lv1**2+13.6/lv2**2),2)} эВ`,42,18);
+      const initial=Math.max(1,Math.round(Number(p.levelA??1))),final=Math.max(1,Math.round(Number(p.levelB??3))),energy=Math.abs(-13.6/initial**2+13.6/final**2),levelY=n=>base-(-13.6/n**2+13.6)/13.6*(base-48);
+      for(let n=1;n<=8;n++){const yy=levelY(n);ctx.strokeStyle=n===initial?'#c9f07a':n===final?'#c2a5ff':'#41503f';ctx.lineWidth=n===initial||n===final?2:1;ctx.beginPath();ctx.moveTo(w*.22,yy);ctx.lineTo(w*.79,yy);ctx.stroke();ctx.fillStyle='#acb9a6';ctx.font='9px var(--mono)';ctx.fillText(`n=${n}`,w*.13,yy+3);}
+      if(initial!==final){drawArrow(ctx,w*.51,levelY(initial),w*.51,levelY(final),final>initial?'#c2a5ff':'#f2a96c',2,7);text(final>initial?'поглощение фотона':'излучение фотона',w*.55,Math.min(levelY(initial),levelY(final))-8,final>initial?'#c2a5ff':'#f2a96c');}
+      text(`Разность уровней ${fmt(energy,3)} эВ · длина волны фотона ${energy?fmt(1239.842/energy,1):'∞'} нм`);text(initial===final?'Перехода нет':final>initial?'Электрон получил энергию и перешёл выше':'Электрон перешёл ниже и испустил фотон',42,h-31);
     } else if(t.key==='nucleus'){
-      const half=p.halfLife||3,time=p.time||6;graph(x=>base-(h*.4)*2**(-((x-40)/(w-60)*half*6)/half),'#f2a96c',2);ctx.fillStyle='#d3dfce';ctx.font='9px var(--sans)';ctx.fillText(`N(t)/N₀ = 2⁻ᵗ/ᵀ   ·   T½ = ${fmt(half)} мин`,42,18);ctx.fillStyle='#c9f07a';ctx.fillText(`N / N₀ = ${fmt(100*2**(-time/half),1)}%`,42,h-14);
+      const half=Math.max(.01,Number(p.halfLife??3)),elapsed=Math.max(0,Number(p.time??6)),windowTime=Math.max(1,half*4,elapsed*1.25),survival=time=>2**(-time/half),left=40,right=w-20,top=34,bottom=base+5;
+      plot(x=>bottom-survival((x-left)/(right-left)*windowTime)*(bottom-top),'#f2a96c',2);
+      const markX=left+(right-left)*Math.min(1,elapsed/windowTime),markY=bottom-survival(elapsed)*(bottom-top);ctx.strokeStyle='#687866';ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(markX,bottom);ctx.lineTo(markX,markY);ctx.stroke();ctx.setLineDash([]);dot(markX,markY,5,'#c9f07a');
+      const remaining=survival(elapsed),count=Math.max(0,Math.round(32*remaining));for(let i=0;i<32;i++){const x=w*.2+(i%8)*w*.085,y=h*.34+Math.floor(i/8)*13;dot(x,y,3.2,i<count?'#8db9fa':'#3b473b');}
+      text(`Период полураспада ${fmt(half)} мин · прошло ${fmt(elapsed)} мин · осталось ${fmt(remaining*100,1)}%`);text(`В модели осталось ${count} из 32 ядер; показано статистическое убывание`,42,h-31);
     }
   }
 
@@ -1117,7 +1306,7 @@
     state.bodies=[{id:1,name:'Тележка A',mass:2,x:2,y:4.4,vx:2.2,vy:-.2,r:.27,color:colors[0],charge:18,restitution:.78,mu:.14},{id:2,name:'Груз B',mass:3,x:6.9,y:2.1,vx:-1.1,vy:0,r:.38,color:colors[1],charge:-25,restitution:.62,mu:.24}];
     state.bodyId=2;state.selectedBody=1;state.simulationTime=0;state.moleculePositions=[];state.running=true;resetNuclei();renderLab();persist();showToast('Все параметры лаборатории сброшены.');
   }
-  function selectLab(mode) { if(mode==='field'||mode==='induction'){state.lab.electroMode=mode==='field'?'electric':'induction';mode='electromagnetism';} state.sim=mode;state.running=true;if(mode==='quantum'&&!nuclei.length)resetNuclei();render();persist(); }
+  function selectLab(mode) { if(mode==='field'||mode==='induction'){state.lab.electroMode=mode==='field'?'electric':'induction';mode='electromagnetism';} state.sim=mode;state.running=true;if(mode!=='circuits')circuitFullscreen=false;if(mode==='quantum'&&!nuclei.length)resetNuclei();render();persist(); }
   function saveExperiment() {
     const mode=simModes.find(s=>s[0]===state.sim)?.[1]||'Физика';
     const clone=value=>JSON.parse(JSON.stringify(value));
@@ -1141,12 +1330,24 @@
     controls?.addEventListener('dragstart',ev=>{const item=ev.target.closest('[data-circuit-palette]');if(!item||state.sim!=='circuits')return;ev.dataTransfer.effectAllowed='copy';ev.dataTransfer.setData('text/plain',item.dataset.circuitPalette);});
     canvas.addEventListener('dragover',ev=>{if(state.sim==='circuits'){ev.preventDefault();ev.dataTransfer.dropEffect='copy';}});
     canvas.addEventListener('drop',ev=>{if(state.sim!=='circuits')return;const type=ev.dataTransfer.getData('text/plain');if(!circuitCatalog.some(item=>item.type===type))return;ev.preventDefault();const rect=canvas.getBoundingClientRect();addCircuitElement(type,(ev.clientX-rect.left-31)/(rect.width-62),(ev.clientY-rect.top-39)/(rect.height-78));});
-    canvas.addEventListener('dblclick',ev=>{if(state.sim!=='circuits'||lastPointerType!=='mouse'||(lastCircuitWireCompleteAt>0&&performance.now()-lastCircuitWireCompleteAt<450))return;const rect=canvas.getBoundingClientRect(),x=ev.clientX-rect.left,y=ev.clientY-rect.top,p=[...state.lab.circuit.elements].reverse().find(item=>{const q=circuitScreen(item,rect.width,rect.height);return Math.abs(q.x-x)<31&&Math.abs(q.y-y)<23;});if(p)armCircuitWire(p.id,x,y,rect.width,rect.height);});
+    canvas.addEventListener('dblclick',ev=>{
+      if(state.sim!=='circuits'||lastPointerType!=='mouse')return;
+      const rect=canvas.getBoundingClientRect(),x=ev.clientX-rect.left,y=ev.clientY-rect.top,wire=circuitWireAt(x,y,rect.width,rect.height,10);
+      if(wire){removeCircuitWire(wire.id);return;}
+      if(lastCircuitWireCompleteAt>0&&performance.now()-lastCircuitWireCompleteAt<450)return;
+      const p=[...state.lab.circuit.elements].reverse().find(item=>{const q=circuitScreen(item,rect.width,rect.height);return Math.abs(q.x-x)<31&&Math.abs(q.y-y)<23;});if(p)armCircuitWire(p.id,x,y,rect.width,rect.height);
+    });
     canvas.addEventListener('pointerdown',ev=>{
       if(state.sim==='circuits'){
         lastPointerType=ev.pointerType||'mouse';
-        const rect=canvas.getBoundingClientRect(),x=ev.clientX-rect.left,y=ev.clientY-rect.top,p=[...state.lab.circuit.elements].reverse().find(item=>{const q=circuitScreen(item,rect.width,rect.height);return Math.abs(q.x-x)<31&&Math.abs(q.y-y)<23;});
-        if(p){circuitPointer={id:p.id,startX:x,startY:y,moved:false,longPressed:false,timer:null};canvas.setPointerCapture(ev.pointerId);if(lastPointerType==='touch'||lastPointerType==='pen')circuitPointer.timer=setTimeout(()=>{if(!circuitPointer||circuitPointer.moved||state.sim!=='circuits')return;circuitPointer.longPressed=true;const r=canvas.getBoundingClientRect();armCircuitWire(p.id,x,y,r.width,r.height);},520);}else if(state.lab.circuit.pendingWire){state.lab.circuit.pendingWire=null;renderLabControls();}
+        const rect=canvas.getBoundingClientRect(),x=ev.clientX-rect.left,y=ev.clientY-rect.top,wire=circuitWireAt(x,y,rect.width,rect.height,12);
+        if(wire){
+          const pressed={kind:'wire',wireId:wire.id,startX:x,startY:y,moved:false,longPressed:false,timer:null};circuitPointer=pressed;canvas.setPointerCapture(ev.pointerId);
+          if(lastPointerType==='touch'||lastPointerType==='pen')pressed.timer=setTimeout(()=>{if(circuitPointer!==pressed||pressed.moved||state.sim!=='circuits')return;pressed.longPressed=true;removeCircuitWire(pressed.wireId);},520);
+          return;
+        }
+        const p=[...state.lab.circuit.elements].reverse().find(item=>{const q=circuitScreen(item,rect.width,rect.height);return Math.abs(q.x-x)<31&&Math.abs(q.y-y)<23;});
+        if(p){circuitPointer={kind:'element',id:p.id,startX:x,startY:y,moved:false,longPressed:false,timer:null};canvas.setPointerCapture(ev.pointerId);if(lastPointerType==='touch'||lastPointerType==='pen'){const pressed=circuitPointer;pressed.timer=setTimeout(()=>{if(circuitPointer!==pressed||pressed.moved||state.sim!=='circuits')return;pressed.longPressed=true;const r=canvas.getBoundingClientRect();armCircuitWire(p.id,x,y,r.width,r.height);},520);}}else if(state.lab.circuit.pendingWire){state.lab.circuit.pendingWire=null;renderLabControls();}
         return;
       }
       if(state.sim!=='mechanics'&&!electricLabMode())return;
@@ -1159,7 +1360,7 @@
     canvas.addEventListener('pointermove',ev=>{
       if(state.sim==='circuits'){
         const rect=canvas.getBoundingClientRect(),x=ev.clientX-rect.left,y=ev.clientY-rect.top;circuitPointerPosition={x,y};
-        if(circuitPointer){const dx=x-circuitPointer.startX,dy=y-circuitPointer.startY;if(Math.hypot(dx,dy)>6&&!circuitPointer.longPressed){clearTimeout(circuitPointer.timer);circuitPointer.moved=true;}if(circuitPointer.moved){const p=state.lab.circuit.elements.find(item=>item.id===circuitPointer.id);if(p){p.x=Math.max(.08,Math.min(.92,(x-31)/(rect.width-62)));p.y=Math.max(.12,Math.min(.88,(y-39)/(rect.height-78)));}}}
+        if(circuitPointer){const dx=x-circuitPointer.startX,dy=y-circuitPointer.startY;if(Math.hypot(dx,dy)>6&&!circuitPointer.longPressed){clearTimeout(circuitPointer.timer);circuitPointer.moved=true;}if(circuitPointer.moved&&circuitPointer.kind==='element'){const p=state.lab.circuit.elements.find(item=>item.id===circuitPointer.id);if(p){p.x=Math.max(.08,Math.min(.92,(x-31)/(rect.width-62)));p.y=Math.max(.12,Math.min(.88,(y-39)/(rect.height-78)));}}}
         return;
       }
       if(!state.drag)return;const rect=canvas.getBoundingClientRect(),b=state.bodies.find(x=>x.id===state.drag.id);if(!b)return;
@@ -1167,17 +1368,22 @@
       if(lorentz){if(Math.hypot(ev.clientX-rect.left-state.drag.startX,ev.clientY-rect.top-state.drag.startY)>1.5)state.drag.moved=true;b.x=point.x;b.y=point.y;b.lorentzTrail=[];}else{b.x=Math.max(b.r,Math.min((rect.width-48)/worldScale-b.r,point.x));b.y=Math.max(b.r,Math.min((rect.height-40)/worldScale-b.r,point.y));b.vx=0;b.vy=0;}
     });
     const end=ev=>{
-      if(circuitPointer){const drag=circuitPointer;clearTimeout(drag.timer);circuitPointer=null;if(state.sim==='circuits'){if(drag.moved){persist();updateLabNumbers();}else if(!drag.longPressed){const rect=canvas.getBoundingClientRect();selectCircuitPart(drag.id,ev.clientX-rect.left,ev.clientY-rect.top,rect.width,rect.height);}}return;}
+      if(circuitPointer){const drag=circuitPointer;clearTimeout(drag.timer);circuitPointer=null;if(state.sim==='circuits'&&drag.kind==='element'){if(drag.moved){persist();updateLabNumbers();}else if(!drag.longPressed){const rect=canvas.getBoundingClientRect();selectCircuitPart(drag.id,ev.clientX-rect.left,ev.clientY-rect.top,rect.width,rect.height);}}return;}
       if(!state.drag)return;const drag=state.drag,resume=drag.wasRunning,b=state.bodies.find(x=>x.id===drag.id),lorentz=state.sim==='electromagnetism'&&state.lab.electroMode==='lorentz';if(lorentz&&b&&drag.moved){b.vx=drag.velocity.vx;b.vy=drag.velocity.vy;b.lorentzTrail=[{x:b.x,y:b.y}];}state.drag=null;state.running=resume;updateLabNumbers();persist();
     };
     canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',()=>{if(circuitPointer)clearTimeout(circuitPointer.timer);circuitPointer=null;if(state.drag){const drag=state.drag,b=state.bodies.find(x=>x.id===drag.id),lorentz=state.sim==='electromagnetism'&&state.lab.electroMode==='lorentz';if(lorentz&&b&&drag.moved){b.vx=drag.velocity.vx;b.vy=drag.velocity.vy;b.lorentzTrail=[{x:b.x,y:b.y}];}state.running=drag.wasRunning;state.drag=null;updateLabNumbers();persist();}});
+  }
+
+  function setMobileMenu(open){
+    const sidebar=$('.sidebar'),backdrop=$('.menu-backdrop'),trigger=$('.mobile-menu');
+    sidebar?.classList.toggle('mobile-open',open);if(backdrop)backdrop.hidden=!open;trigger?.setAttribute('aria-expanded',String(open));
   }
 
   document.addEventListener('click',ev=>{
     const themeChoice=ev.target.closest('[data-setting-theme]');if(themeChoice){state.settings.theme=themeChoice.dataset.settingTheme;applySettings();persist();renderSettings();return;}
     const fontChoice=ev.target.closest('[data-setting-font]');if(fontChoice){state.settings.fontSize=fontChoice.dataset.settingFont;applySettings();persist();renderSettings();return;}
     const deleteExperiment=ev.target.closest('[data-delete-experiment]');if(deleteExperiment){const before=state.savedExperiments.length;state.savedExperiments=state.savedExperiments.filter(experiment=>String(experiment.id)!==deleteExperiment.dataset.deleteExperiment);if(state.savedExperiments.length!==before){persist();renderSettings();showToast('Эксперимент удалён.');}return;}
-    const nav=ev.target.closest('[data-nav]');if(nav){ev.preventDefault();setScreen(nav.dataset.nav);return;}
+    const nav=ev.target.closest('[data-nav]');if(nav){ev.preventDefault();setMobileMenu(false);setScreen(nav.dataset.nav);return;}
     const group=ev.target.closest('[data-group]');if(group){state.group=group.dataset.group;state.topic=groupOf(state.group).topics[0];setScreen('theory');return;}
     const topic=ev.target.closest('[data-topic]');if(topic){state.topic=topic.dataset.topic;state.group=activeTopic().group;setScreen('theory');$('#modal-backdrop')?.remove();return;}
     const em=ev.target.closest('[data-em-mode]');if(em){state.lab.electroMode=em.dataset.emMode;if(em.dataset.emMode==='lorentz')ensureLorentzSetup();renderLabControls();updateLabNumbers();persist();return;}
@@ -1207,6 +1413,7 @@
     if(action==='add-body'){addBody();return;}
     if(action==='remove-body'){removeSelectedBody();return;}
     if(action==='save-experiment'){saveExperiment();return;}
+    if(action==='circuit-fullscreen'){circuitFullscreen=!circuitFullscreen;$('.circuit-layout')?.classList.toggle('is-fullscreen',circuitFullscreen);const button=ev.target.closest('[data-action="circuit-fullscreen"]');if(button){button.setAttribute('aria-expanded',String(circuitFullscreen));button.textContent=circuitFullscreen?'↙ Выйти из полного экрана':'⛶ На весь экран';}return;}
     if(action==='bookmark'){
       if(!state.completedTopics.has(state.topic)){state.completedTopics.add(state.topic);state.completed++;persist();showToast('Тема добавлена в пройденные.');}else showToast('Эта тема уже в пройденных.');
       return;
@@ -1217,8 +1424,11 @@
     if(action==='about'){showAbout();return;}
     if(action==='search'){showSearch();return;}
     if(action==='close-modal'){state.modal='';$('#modal-backdrop')?.remove();return;}
-    if(action==='menu'){$('.sidebar').classList.toggle('mobile-open');return;}
+    if(action==='menu'){setMobileMenu(!$('.sidebar').classList.contains('mobile-open'));return;}
+    if(action==='close-menu'){setMobileMenu(false);return;}
   });
+
+  document.addEventListener('keydown',ev=>{if(ev.key==='Escape'){if($('.sidebar')?.classList.contains('mobile-open'))setMobileMenu(false);if(circuitFullscreen){circuitFullscreen=false;$('.circuit-layout')?.classList.remove('is-fullscreen');const button=$('[data-action="circuit-fullscreen"]');if(button){button.setAttribute('aria-expanded','false');button.textContent='⛶ На весь экран';}}}});
 
   document.addEventListener('input',ev=>{
     const target=ev.target;
