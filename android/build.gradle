@@ -1,0 +1,12 @@
+buildscript {
+    repositories {
+        if (System.getProperty('physics.maven.repo')) {
+            maven { url = uri(System.getProperty('physics.maven.repo')) }
+        }
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.2'
+    }
+}

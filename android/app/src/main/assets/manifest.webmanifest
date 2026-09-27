@@ -1,0 +1,13 @@
+{
+  "name": "Физика ЕГЭ — интерактивная лаборатория",
+  "short_name": "Лаборатория",
+  "description": "Теория физики, выводы формул и интерактивные эксперименты для ЕГЭ-2027.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#111713",
+  "theme_color": "#111713",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

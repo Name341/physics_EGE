@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'ru.physandbox.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'ru.physandbox.app'
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// Канонические файлы приложения общие для сайта и APK.
+tasks.register('syncSharedWebApp', Sync) {
+    from(rootProject.file('../web'))
+    into(layout.projectDirectory.dir('src/main/assets'))
+}
+
+tasks.named('preBuild').configure { dependsOn('syncSharedWebApp') }
